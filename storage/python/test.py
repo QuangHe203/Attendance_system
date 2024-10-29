@@ -2,14 +2,14 @@ from mtcnn_detector import detect_and_save
 from facenet_embedding import get_embedding
 from PIL import Image
 import os
-from vectordb_pinecone import upload_embeddings, fetch_embedding
+# from vectordb_pinecone import upload_embeddings, fetch_embedding
 import numpy as np
 from knn_recognition import knn_recognition
 from vectordb_pickle import save_embeddings, load_embeddings
 
-image_path = "images/21012057.png"
+# image_path = "images/21012057.png"
 
-detect_and_save(image_path, "21012057", "21012057")
+# detect_and_save(image_path, "21012057", "21012057")
 
 
 
@@ -28,16 +28,16 @@ detect_and_save(image_path, "21012057", "21012057")
 
 # upload_embeddings(embeddings, studentID)
 
-image_face = "faces/21012057/21012057.jpg"
-img = Image.open(image_face).convert("RGB")
+# image_face = "faces/21011601/21011601_1.jpg"
+# img = Image.open(image_face).convert("RGB")
 
 # image_face2 = "faces/21012057/21012057.jpg"
 # img2 = Image.open(image_face).convert("RGB")
 
-embedding = get_embedding(img).flatten()
+# embedding = get_embedding(img).flatten()
 # embedding2 = get_embedding(img2).flatten()
 
-save_embeddings(embeddings=embedding, studentID="21012057")
+# save_embeddings(embeddings=embedding, studentID="SV03")
 all_embeddings = load_embeddings()
 
 # In kết quả
