@@ -16,7 +16,7 @@ class CourseSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('courses')->insert(
+        DB::table('courses')->insert([
             [
                 'course_name'=>'Phân tích và thiết kế phần mềm N02_2024',
                 'teacher_id'=>'Gv01',
@@ -32,7 +32,7 @@ class CourseSeeder extends Seeder
                 'department'=>'Ngôn ngữ Hàn Quốc',
                 'created_at'=>now(),
                 'updated_at'=>now(),
-            ]
-        );
+            ],
+        ]);
     }
 }
