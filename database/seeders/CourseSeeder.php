@@ -6,7 +6,8 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class TeacherSeeder extends Seeder
+
+class CourseSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,26 +16,23 @@ class TeacherSeeder extends Seeder
      */
     public function run()
     {
-        //
-        DB::table('teachers')->insert([
+        DB::table('courses')->insert(
             [
-                'fullname'=>'Mai Thúy Nga',
+                'course_name'=>'Phân tích và thiết kế phần mềm N02_2024',
                 'teacher_id'=>'Gv01',
-                'phonenumber'=>'0354785124',
-                'email'=>'thuynga@gmail.com',
+                'subject_name'=>'Phân tích và thiết kế phần mềm',
                 'department'=>'Công nghệ thông tin',
                 'created_at'=>now(),
-                'updated_at'=> now(),
+                'updated_at'=>now(),
             ],
             [
-                'fullname'=>'Hoàng Thị Liên',
+                'course_name'=>'Kỹ năng giao tiếp bằng tiếng Hàn N11_2024',
                 'teacher_id'=>'Gv02',
-                'phonenumber'=>'095471587',
-                'email'=>'thilien@gmail.com',
+                'subject_name'=>'Kỹ năng giao tiếp bằng tiếng Hàn',
                 'department'=>'Ngôn ngữ Hàn Quốc',
                 'created_at'=>now(),
-                'updated_at'=> now(),
-            ],
-        ]);
+                'updated_at'=>now(),
+            ]
+        );
     }
 }
