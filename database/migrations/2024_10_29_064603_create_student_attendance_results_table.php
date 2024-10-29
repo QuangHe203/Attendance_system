@@ -17,8 +17,7 @@ return new class extends Migration
             $table->id('attendance_result_id');
             $table->string('student_id');
             $table->integer('period_id');
-            $table->time('time_attend');
-            $table->date('date_attend');
+            $table->dateTime('time_attend');
             $table->timestamps();
         });
     }
