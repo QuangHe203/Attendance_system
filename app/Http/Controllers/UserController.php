@@ -30,7 +30,11 @@ class UserController extends Controller
         $query = $request->input('q');
         $role = $request->input('role');
 
+<<<<<<< HEAD
         $users = User::where('role', '!=', 'admin');
+=======
+        $users = User::query();
+>>>>>>> e37b194 (update)
 
         if ($query) {
             $users->where('user_id', 'like', "%{$query}%")
@@ -86,7 +90,11 @@ class UserController extends Controller
     public function list(Request $request)
     {
         
+<<<<<<< HEAD
         $users = User::where('role', '!=', 'admin')->paginate(10);
+=======
+        $users = User::all();
+>>>>>>> e37b194 (update)
 
         if ($users->count() > 0) {
             $table = '';
@@ -95,24 +103,42 @@ class UserController extends Controller
                     $table .= "
                 <tr>
                     <td style='text-align: start'><img src='{$user->student->image}' width='65' height='auto'></td>
+<<<<<<< HEAD
                     <td style='text-align: start'>{$user->student->fullname}</td>
                     <td style='text-align: start'>{$user->reference_id}</td>
                     <td style='text-align: start'>{$user->student->phonenumber}</td>
                     <td style='text-align: start'>Sinh viên</td>
                     <td style='text-align: start'><a href='" . route('user.edit', $user->reference_id) . "'><img src='" . asset('images/editing.png') . "' width='20px' height='auto'></a></td>
                     <td style='text-align: start'><a href='" . route('user.delete', $user->reference_id) . "' onclick='return confirm(\"Bạn có chắc chắn muốn xóa tài khoản này?\");'><img src='" . asset('images/delete.png') . "' width='20px' height='auto'></a></td>
+=======
+                    <td>{$user->student->fullname}</td>
+                    <td>{$user->reference_id}</td>
+                    <td>{$user->student->phonenumber}</td>
+                    <td>Sinh viên</td>
+                    <td><a href='" . route('user.edit', $user->reference_id) . "'><img src='" . asset('images/editing.png') . "' width='20px' height='auto'></a></td>
+                    <td><a href='" . route('user.delete', $user->reference_id) . "' onclick='return confirm(\"Bạn có chắc chắn muốn xóa tài khoản này?\");'><img src='" . asset('images/delete.png') . "' width='20px' height='auto'></a></td>
+>>>>>>> e37b194 (update)
                 </tr>
                 ";
                 } elseif ($user->role == 'teacher') {
                     $table .= "
                 <tr>
                     <td style='text-align: start'><img src='{$user->teacher->image}' width='65' height='auto'></td>
+<<<<<<< HEAD
                     <td style='text-align: start'>{$user->teacher->fullname}</td>
                     <td style='text-align: start'>{$user->reference_id}</td>
                     <td style='text-align: start'>{$user->teacher->phonenumber}</td>
                     <td style='text-align: start'>Giáo viên</td>
                     <td style='text-align: start'><a href='" . route('user.edit', $user->reference_id) . "'><img src='" . asset('images/editing.png') . "' width='20px' height='auto'></a></td>
                     <td style='text-align: start'><a href='" . route('user.delete', $user->reference_id) . "' onclick='return confirm(\"Bạn có chắc chắn muốn xóa tài khoản này?\");'><img src='" . asset('images/delete.png') . "' width='20px' height='auto'></a></td>
+=======
+                    <td>{$user->teacher->fullname}</td>
+                    <td>{$user->reference_id}</td>
+                    <td>{$user->teacher->phonenumber}</td>
+                    <td>Giáo viên</td>
+                    <td><a href='" . route('user.edit', $user->reference_id) . "'><img src='" . asset('images/editing.png') . "' width='20px' height='auto'></a></td>
+                    <td><a href='" . route('user.delete', $user->reference_id) . "' onclick='return confirm(\"Bạn có chắc chắn muốn xóa tài khoản này?\");'><img src='" . asset('images/delete.png') . "' width='20px' height='auto'></a></td>
+>>>>>>> e37b194 (update)
                 </tr>
                 ";
                 }

@@ -47,7 +47,13 @@ class StudentSeeder extends Seeder
                 'email'=>'vanlong@gmail.com',
                 'department'=>'Công nghệ thông tin',
                 'student_id'=>'SV04',
+<<<<<<< HEAD
                 'year'=>'K16',,
+=======
+                'year'=>'K16',
+                'created_at'=>now(),
+                'updated_at'=> now(),
+>>>>>>> e37b194 (update)
             ],
             [
                 'fullname'=>'Trần Phương Thảo',

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+<<<<<<< HEAD
 use App\Models\StudentAttendanceResult;
 use Illuminate\Support\Facades\DB;
 
@@ -113,4 +114,10 @@ class StudentAttendanceResultController extends Controller
         return response()->json(['message' => 'Không tìm thấy kết quả nào']);
     }
     
+=======
+
+class StudentAttendanceResultController extends Controller
+{
+    //
+>>>>>>> e37b194 (update)
 }
