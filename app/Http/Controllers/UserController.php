@@ -30,10 +30,6 @@ class UserController extends Controller
         $query = $request->input('q');
         $role = $request->input('role');
 
-        if (empty($query)) {
-            return $this->showAccountDetail($request);
-        }
-
         $users = User::query();
 
         if ($query) {
@@ -85,5 +81,46 @@ class UserController extends Controller
         return response()->json([
             'message' => 'Không tìm thấy người dùng nào',
         ]);
+    }
+
+    public function list(Request $request)
+    {
+        
+        $users = User::all();
+
+        if ($users->count() > 0) {
+            $table = '';
+            foreach ($users as $user) {
+                if ($user->role == 'student') {
+                    $table .= "
+                <tr>
+                    <td style='text-align: start'><img src='{$user->student->image}' width='65' height='auto'></td>
+                    <td>{$user->student->fullname}</td>
+                    <td>{$user->reference_id}</td>
+                    <td>{$user->student->phonenumber}</td>
+                    <td>Sinh viên</td>
+                    <td><a href='" . route('user.edit', $user->reference_id) . "'><img src='" . asset('images/editing.png') . "' width='20px' height='auto'></a></td>
+                    <td><a href='" . route('user.delete', $user->reference_id) . "' onclick='return confirm(\"Bạn có chắc chắn muốn xóa tài khoản này?\");'><img src='" . asset('images/delete.png') . "' width='20px' height='auto'></a></td>
+                </tr>
+                ";
+                } elseif ($user->role == 'teacher') {
+                    $table .= "
+                <tr>
+                    <td style='text-align: start'><img src='{$user->teacher->image}' width='65' height='auto'></td>
+                    <td>{$user->teacher->fullname}</td>
+                    <td>{$user->reference_id}</td>
+                    <td>{$user->teacher->phonenumber}</td>
+                    <td>Giáo viên</td>
+                    <td><a href='" . route('user.edit', $user->reference_id) . "'><img src='" . asset('images/editing.png') . "' width='20px' height='auto'></a></td>
+                    <td><a href='" . route('user.delete', $user->reference_id) . "' onclick='return confirm(\"Bạn có chắc chắn muốn xóa tài khoản này?\");'><img src='" . asset('images/delete.png') . "' width='20px' height='auto'></a></td>
+                </tr>
+                ";
+                }
+            }
+
+            return response()->json([
+                'table' => $table,
+            ]);
+        }
     }
 }

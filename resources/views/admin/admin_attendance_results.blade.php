@@ -205,26 +205,25 @@
                 <table>
                     <thead>
                         <tr>
-                            <td>ID Lớp học</td>
+                            <td>Tên Lớp học</td>
                             <td>Tên môn học</td>
                             <td>ID Sinh viên</td>
                             <td>Tên sinh viên</td>
-                            <td>Giờ bắt đầu</td>
-                            <td>Giờ kết thúc</td>
+                            <td>Giờ điểm danh</td>
                             <td>Ngày điểm danh</td>
                             <td>Tình trạng</td>
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach($student_attendance_results as $student_attendance_result)
                         <tr>
-                            <td>1</td>
-                            <td>Phân tích thiết kế phần mềm</td>
-                            <td>SV123</td>
-                            <td>Hệ si si si</td>
-                            <td>06h45</td>
-                            <td>09h25</td>
-                            <td>20/10/2024</td>
-                            <td>Vắng</td>
+                            <td>{{$student_attendance_result->course_name}}</td>
+                            <td>{{$student_attendance_result->subject_name}}</td>
+                            <td>{{$student_attendance_result->student_id}}</td>
+                            <td>{{$student_attendance_result->student_name}}</td>
+                            <td>{{$student_attendance_result->time_attendance}}</td>
+                            <td>{{$student_attendance_result->date_attendance}}</td>
+                            <td>{{$student_attendance_result->status}}</td>
                         </tr>
                         <tr>
                             <td>1</td>

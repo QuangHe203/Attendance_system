@@ -15,6 +15,11 @@ use App\Http\Controllers\UserController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', function () {
+    return redirect()->route('login');
+});
+
+
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
@@ -23,7 +28,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/admin_account_management', [UserController::class, 'showAccountDetail'])->name('admin.account_management');
 
 #ACCOUNT MANAGEMENT
-Route::get('/user/list', [UserController::class, 'showAccountDetail'])->name('user.list');
+Route::get('/user/list', [UserController::class, 'list'])->name('user.list');
 Route::get('/user/search', [UserController::class, 'search'])->name('user.search');
 Route::get('/user/edit', function() {})->name('user.edit');
 Route::get('/user/delete', function() {})->name('user.delete');
