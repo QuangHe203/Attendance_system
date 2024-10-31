@@ -5,15 +5,13 @@ from sklearn.neighbors import NearestNeighbors
 # from knn_recognition import knn_recognition
 # from vectordb_pinecone import fetch_embedding, query_embedding
 from vectordb_pickle import load_embeddings
+from datetime import datetime
+from local_db import save_attendance, check_if_attendance_exists
 # from utils import capture_image
 
 import numpy as np
 
 def main():
-    # studentID = "21011601"
-    # stored_embeddings = fetch_embedding(studentID)
-    # stored_embeddings = np.array([np.array(e) for e in stored_embeddings]) 
-    # threshold = 0.55
     all_embeddings = load_embeddings()
     studentIDs = list(all_embeddings.keys())
     stored_embeddings = np.array([np.array(e) for e in all_embeddings.values()])
@@ -28,6 +26,9 @@ def main():
 
     cap = cv2.VideoCapture(0) 
 
+    recognition_counter = {} # Đếm số lần nhận diện chính xác mỗi sinh viên
+    attendance_confirmed = {} # Theo dõi sinh viên đã điểm danh
+
     while True:
         ret, frame = cap.read()  
         if not ret:
@@ -36,29 +37,13 @@ def main():
         # print("Frame shape:", frame.shape) 
         frame, faces = detect_face(frame) 
         if faces is not None and len(faces) > 0:
-        #     print(f"Số khuôn mặt phát hiện: {len(faces)}")
-        # else:
-        #     print("Không phát hiện khuôn mặt nào.")
-            # box = faces[0]
-            # x1, y1, x2, y2 = box.astype(int)
-            # face_img = frame[y1:y2, x1:x2] 
-
-            # embedding = get_embedding(face_img)  
-
-            # match, distance = knn_recognition(embedding.flatten(), stored_embeddings, threshold)  # So sánh embedding
-
-            # if match:
-            #     print(f"Success! distance: {distance:.2f}")
-            # else:
-            #     print(f"False! distance: {distance:.2f}")
+            
             for i in range(faces.shape[0]):
                 x1, y1, x2, y2 = faces[i].astype(int)
                 face_img = frame[y1:y2, x1:x2]
 
                 embedding = get_embedding(face_img).flatten()
-                # print(embedding)
-                # print(type(embedding))
-                # print(embedding.shape)
+    
                 distances, indices = knn.kneighbors([embedding])
                 distance = distances[0][0]
                 studentID = studentIDs[indices[0][0]]
@@ -66,6 +51,22 @@ def main():
                 if distance < threshold:
                     cv2.rectangle(frame, (x1, y1), (x2, y2), (255, 0, 0), 2)
                     cv2.putText(frame, f"ID: {studentID}, Score: {distance:.2f}", (x1, y1-10), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (0, 255, 0), 2)
+
+                    if studentID not in recognition_counter:
+                        recognition_counter[studentID] = 1
+                    else:
+                        recognition_counter[studentID] += 1
+                    
+                    # Nếu nhận diện 3 frame liên tiếp và chưa được điểm danh 
+                    if recognition_counter[studentID] >= 3 and not attendance_confirmed.get(studentID, False):
+                        period_id = 1
+                        time_attend = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+
+                        if not check_if_attendance_exists(student_id = studentID, period_id= period_id):
+                            save_attendance(student_id= studentID, period_id= period_id, time_attend= time_attend)
+                            attendance_confirmed[studentID] = True
+                        else:
+                            print(f"Student ID: {studentID} has already been marked present for period {period_id}")
                 else:
                     cv2.rectangle(frame, (x1, y1), (x2, y2), (255, 0, 0), 2)
                     cv2.putText(frame, "Unknown", (x1, y1-10), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (0, 0, 255), 2)
