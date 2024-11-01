@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\StudentAttendanceResultController;
 use App\Http\Controllers\UserController;
 
 /*
@@ -37,7 +38,7 @@ Route::get('/user/delete', function() {})->name('user.delete');
 Route::get('/admin_schedule_management', function() { return view('admin.admin_schedule_management');})->name('admin.schedule_management');
 
 #ATTENDANCE RESULT
-Route::get('/admin_attendance_management', function(){return view('admin.admin_attendance_results');})->name('admin.attendance_results');
+Route::get('/admin_attendance_management', [StudentAttendanceResultController::class, 'index'])->name('admin.attendance_results');
 
 #MAILBOX MANAGEMENT
 Route::get('/admin_mailbox_management', function() {return view('admin.admin_mailbox_management'); })->name('admin.mailbox_management');
