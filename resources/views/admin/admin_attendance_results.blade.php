@@ -225,102 +225,13 @@
                             <td>{{$student_attendance_result->date_attendance}}</td>
                             <td>{{$student_attendance_result->status}}</td>
                         </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Phân tích thiết kế phần mềm</td>
-                            <td>SV123</td>
-                            <td>Hệ si si si</td>
-                            <td>06h45</td>
-                            <td>09h25</td>
-                            <td>20/10/2024</td>
-                            <td>Vắng</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Phân tích thiết kế phần mềm</td>
-                            <td>SV123</td>
-                            <td>Hệ si si si</td>
-                            <td>06h45</td>
-                            <td>09h25</td>
-                            <td>20/10/2024</td>
-                            <td>Vắng</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Phân tích thiết kế phần mềm</td>
-                            <td>SV123</td>
-                            <td>Hệ si si si</td>
-                            <td>06h45</td>
-                            <td>09h25</td>
-                            <td>20/10/2024</td>
-                            <td>Vắng</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Phân tích thiết kế phần mềm</td>
-                            <td>SV123</td>
-                            <td>Hệ si si si</td>
-                            <td>06h45</td>
-                            <td>09h25</td>
-                            <td>20/10/2024</td>
-                            <td>Vắng</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Phân tích thiết kế phần mềm</td>
-                            <td>SV123</td>
-                            <td>Hệ si si si</td>
-                            <td>06h45</td>
-                            <td>09h25</td>
-                            <td>20/10/2024</td>
-                            <td>Vắng</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Phân tích thiết kế phần mềm</td>
-                            <td>SV123</td>
-                            <td>Hệ si si si</td>
-                            <td>06h45</td>
-                            <td>09h25</td>
-                            <td>20/10/2024</td>
-                            <td>Vắng</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Phân tích thiết kế phần mềm</td>
-                            <td>SV123</td>
-                            <td>Hệ si si si</td>
-                            <td>06h45</td>
-                            <td>09h25</td>
-                            <td>20/10/2024</td>
-                            <td>Vắng</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Phân tích thiết kế phần mềm</td>
-                            <td>SV123</td>
-                            <td>Hệ si si si</td>
-                            <td>06h45</td>
-                            <td>09h25</td>
-                            <td>20/10/2024</td>
-                            <td>Vắng</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Phân tích thiết kế phần mềm</td>
-                            <td>SV123</td>
-                            <td>Hệ si si si</td>
-                            <td>06h45</td>
-                            <td>09h25</td>
-                            <td>20/10/2024</td>
-                            <td>Vắng</td>
-                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
                 <div class="next-previous-page">
-                    <a href=""><img src="{{asset('images/arrow-left.png')}}" width="15px" height="auto"></a>
+                    <a href=""><img src="{{ asset('images/arrow-left.png') }}" width="15px" height="auto"></a>
                     <span style="font-weight: bold;margin:0px 15px;font-size:18px">1</span>
-                    <a href=""><img src="{{asset('images/right-arrow.png')}}" width="15px" height="auto"></a>
+                    <a href=""><img src="{{ asset('images/right-arrow.png') }}" width="15px" height="auto"></a>
                 </div>
             </div>
 

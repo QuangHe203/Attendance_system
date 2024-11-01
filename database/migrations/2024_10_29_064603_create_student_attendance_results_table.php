@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('student_id');
             $table->integer('period_id');
             $table->dateTime('time_attend');
+            $table->string('status');
             $table->timestamps();
         });
     }
