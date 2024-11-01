@@ -232,6 +232,7 @@
                             <td>{{$student_attendance_result->date_attendance}}</td>
                             <td>{{$student_attendance_result->status}}</td>
                         </tr>
+<<<<<<< HEAD
                         <tr>
                             <td>1</td>
                             <td>Phân tích thiết kế phần mềm</td>
@@ -346,6 +347,15 @@
                     @else
                     <img src="{{ asset('images/right-arrow.png') }}" width="15px" height="auto" style="opacity: 0.5;" disabled>
                     @endif
+=======
+                        @endforeach
+                    </tbody>
+                </table>
+                <div class="next-previous-page">
+                    <a href=""><img src="{{ asset('images/arrow-left.png') }}" width="15px" height="auto"></a>
+                    <span style="font-weight: bold;margin:0px 15px;font-size:18px">1</span>
+                    <a href=""><img src="{{ asset('images/right-arrow.png') }}" width="15px" height="auto"></a>
+>>>>>>> 9f007ce (update)
                 </div>
 
 

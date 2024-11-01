@@ -19,6 +19,10 @@ return new class extends Migration
             $table->integer('period_id');
             $table->dateTime('time_attend');
             $table->string('status');
+<<<<<<< HEAD
+=======
+            $table->timestamps();
+>>>>>>> 9f007ce (update)
         });
     }
 
