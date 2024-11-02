@@ -19,7 +19,7 @@ class TeacherSeeder extends Seeder
         DB::table('teachers')->insert([
             [
                 'fullname'=>'Mai Thúy Nga',
-                'teacher_id'=>'Gv01',
+                'teacher_id'=>'GV01',
                 'phonenumber'=>'0354785124',
                 'email'=>'thuynga@gmail.com',
                 'department'=>'Công nghệ thông tin',
@@ -28,7 +28,7 @@ class TeacherSeeder extends Seeder
             ],
             [
                 'fullname'=>'Hoàng Thị Liên',
-                'teacher_id'=>'Gv02',
+                'teacher_id'=>'GV02',
                 'phonenumber'=>'095471587',
                 'email'=>'thilien@gmail.com',
                 'department'=>'Ngôn ngữ Hàn Quốc',
