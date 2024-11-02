@@ -2,12 +2,10 @@ import cv2
 from mtcnn_detector import detect_face
 from facenet_embedding import get_embedding
 from sklearn.neighbors import NearestNeighbors
-# from knn_recognition import knn_recognition
-# from vectordb_pinecone import fetch_embedding, query_embedding
 from vectordb_pickle import load_embeddings
 from datetime import datetime
-from local_db import save_attendance, check_if_attendance_exists
-# from utils import capture_image
+from local_db import insert_attendance, check_attendance_exists, get_period_time_start
+from attendance_utils import is_on_time
 
 import numpy as np
 
@@ -16,9 +14,15 @@ def main():
     studentIDs = list(all_embeddings.keys())
     stored_embeddings = np.array([np.array(e) for e in all_embeddings.values()])
     threshold = 0.3
+    period_id = 1
     
     if len(stored_embeddings) == 0:
         print("No embeddings found in the database.")
+        return
+    
+    time_start = get_period_time_start(period_id=period_id)
+    if not time_start:
+        print("Cannot retrieve period time")
         return
     
     knn = NearestNeighbors(n_neighbors=1, metric="cosine")
@@ -26,8 +30,10 @@ def main():
 
     cap = cv2.VideoCapture(0) 
 
+    cap.set(cv2.CAP_PROP_FRAME_WIDTH, 800)
+    cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 600)
+
     recognition_counter = {} # Đếm số lần nhận diện chính xác mỗi sinh viên
-    attendance_confirmed = {} # Theo dõi sinh viên đã điểm danh
 
     while True:
         ret, frame = cap.read()  
@@ -49,6 +55,7 @@ def main():
                 studentID = studentIDs[indices[0][0]]
 
                 if distance < threshold:
+                    
                     cv2.rectangle(frame, (x1, y1), (x2, y2), (255, 0, 0), 2)
                     cv2.putText(frame, f"ID: {studentID}, Score: {distance:.2f}", (x1, y1-10), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (0, 255, 0), 2)
 
@@ -58,15 +65,16 @@ def main():
                         recognition_counter[studentID] += 1
                     
                     # Nếu nhận diện 3 frame liên tiếp và chưa được điểm danh 
-                    if recognition_counter[studentID] >= 3 and not attendance_confirmed.get(studentID, False):
-                        period_id = 1
-                        time_attend = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+                    if recognition_counter[studentID] >= 3:
+                        time_attend = datetime.now()
 
-                        if not check_if_attendance_exists(student_id = studentID, period_id= period_id):
-                            save_attendance(student_id= studentID, period_id= period_id, time_attend= time_attend)
-                            attendance_confirmed[studentID] = True
+                        # Kiểm tra điểm danh hay chưa
+                        if not check_attendance_exists(student_id=studentID, period_id= period_id):
+                            status = is_on_time(time_start=time_start, time_attend= time_attend)
+                            insert_attendance(studentID, period_id, time_attend, status)
+                            print(f"Student with {studentID} has been marked")
                         else:
-                            print(f"Student ID: {studentID} has already been marked present for period {period_id}")
+                            print(f"Student with {studentID} has been marked before")
                 else:
                     cv2.rectangle(frame, (x1, y1), (x2, y2), (255, 0, 0), 2)
                     cv2.putText(frame, "Unknown", (x1, y1-10), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (0, 0, 255), 2)
