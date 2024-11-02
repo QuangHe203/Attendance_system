@@ -68,10 +68,10 @@
                         <thead>
                             <tr>
                                 <td></td>
-                                <td style="padding-bottom: 10px;font-weight:bold;">Tên</td>
-                                <td style="padding-bottom: 10px;font-weight:bold;">Mã định danh</td>
-                                <td style="padding-bottom: 10px;font-weight:bold;">Số điện thoại</td>
-                                <td style="padding-bottom: 10px;font-weight:bold;">Vai trò</td>
+                                <td style="padding-bottom: 10px;font-weight:bold;text-align: start">Tên</td>
+                                <td style="padding-bottom: 10px;font-weight:bold;text-align: start">Mã định danh</td>
+                                <td style="padding-bottom: 10px;font-weight:bold;text-align: start">Số điện thoại</td>
+                                <td style="padding-bottom: 10px;font-weight:bold;text-align: start">Vai trò</td>
                                 <td></td>
                                 <td></td>
                             </tr>
@@ -80,21 +80,37 @@
                             @foreach($accounts as $account)
                                 <tr>
                                     <td style="text-align: start"><img src="{{ $account['image'] }}" width="65" height="auto"></td>
-                                    <td>{{ $account['fullname'] }}</td>
-                                    <td>{{ $account['reference_id'] }}</td>
-                                    <td>{{ $account['phonenumber'] }}</td>
-                                    <td>{{ $account['role'] === 'teacher' ? 'Giáo viên' : 'Sinh viên' }}</td>
+                                    <td style="text-align: start">{{ $account['fullname'] }}</td>
+                                    <td style="text-align: start">{{ $account['reference_id'] }}</td>
+                                    <td style="text-align: start">{{ $account['phonenumber'] }}</td>
+                                    <td style="text-align: start">{{ $account['role'] === 'teacher' ? 'Giáo viên' : 'Sinh viên' }}</td>
                                     <td><a href="{{ route('user.edit', $account['id']) }}"><img src="{{ asset('images/editing.png') }}" width="20px" height="auto"></a></td>
                                     <td><a href="{{ route('user.delete', $account['id']) }}" onclick="return confirm('Bạn có chắc chắn muốn xóa tài khoản này?');"><img src="{{ asset('images/delete.png') }}" width="20px" height="auto"></a></td>
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
-                    <div class="next-previous-page">
-                        <a href="#"><img src="{{ asset('images/arrow-left.png') }}" width="15px" height="auto"></a>
-                        <span style="font-weight: bold;margin:0px 15px;font-size:18px">1</span>
-                        <a href="#"><img src="{{ asset('images/right-arrow.png') }}" width="15px" height="auto"></a>
-                    </div>
+                    <div class="next-previous-page pagination-buttons">
+                    @if ($accounts->onFirstPage())
+                    <img src="{{ asset('images/arrow-left.png') }}" width="15px" height="auto" style="opacity: 0.5;" disabled>
+                    @else
+                    <a href="{{ $accounts->previousPageUrl() }}">
+                        <img src="{{ asset('images/arrow-left.png') }}" width="15px" height="auto">
+                    </a>
+                    @endif
+
+                    <span style="font-weight: bold; margin: 0px 15px; font-size: 18px">
+                        {{ $accounts->currentPage() }} / {{ $accounts->lastPage() }}
+                    </span>
+
+                    @if ($accounts->hasMorePages())
+                    <a href="{{ $student_attendance_results->nextPageUrl() }}">
+                        <img src="{{ asset('images/right-arrow.png') }}" width="15px" height="auto">
+                    </a>
+                    @else
+                    <img src="{{ asset('images/right-arrow.png') }}" width="15px" height="auto" style="opacity: 0.5;" disabled>
+                    @endif
+                </div>
                 @endif
             </div>
         </div>
