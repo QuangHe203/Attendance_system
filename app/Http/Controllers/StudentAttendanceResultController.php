@@ -142,7 +142,7 @@ class StudentAttendanceResultController extends Controller
                 DB::raw('TIME(student_attendance_results.time_attend) as time_attendance'),
                 'student_attendance_results.status'
             )
-            ->get();
+            ->paginate(10);
 
         // Trả về view với dữ liệu kết quả điểm danh
         return view('admin.admin_attendance_results', compact('student_attendance_results'));

@@ -59,6 +59,7 @@
 
             <div id="teacher" class="tab-content">
                 <div class="function-content" name="search-input2">
+                
                     <form action="">
                         @csrf
                         <input type="text" placeholder="Tìm kiếm...">
@@ -211,119 +212,18 @@
                             <td>Tình trạng</td>
                         </tr>
                     </thead>
-<<<<<<< HEAD
                     <tbody id="student_attendance_list">
-=======
-                    <tbody>
->>>>>>> e37b194 (update)
+
                         @foreach($student_attendance_results as $student_attendance_result)
                         <tr>
                             <td>{{$student_attendance_result->course_name}}</td>
                             <td>{{$student_attendance_result->subject_name}}</td>
                             <td>{{$student_attendance_result->student_id}}</td>
-<<<<<<< HEAD
                             <td style="text-align: start; padding-left: 5px;">{{$student_attendance_result->student_name}}</td>
                             <td>{{$student_attendance_result->time_attendance}}</td>
                             <td>{{$student_attendance_result->date_attendance}}</td>
                             <td>{{$student_attendance_result->status}}</td>
-=======
-                            <td>{{$student_attendance_result->student_name}}</td>
-                            <td>{{$student_attendance_result->time_attendance}}</td>
-                            <td>{{$student_attendance_result->date_attendance}}</td>
-                            <td>{{$student_attendance_result->status}}</td>
-                        </tr>
-<<<<<<< HEAD
                         <tr>
-                            <td>1</td>
-                            <td>Phân tích thiết kế phần mềm</td>
-                            <td>SV123</td>
-                            <td>Hệ si si si</td>
-                            <td>06h45</td>
-                            <td>09h25</td>
-                            <td>20/10/2024</td>
-                            <td>Vắng</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Phân tích thiết kế phần mềm</td>
-                            <td>SV123</td>
-                            <td>Hệ si si si</td>
-                            <td>06h45</td>
-                            <td>09h25</td>
-                            <td>20/10/2024</td>
-                            <td>Vắng</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Phân tích thiết kế phần mềm</td>
-                            <td>SV123</td>
-                            <td>Hệ si si si</td>
-                            <td>06h45</td>
-                            <td>09h25</td>
-                            <td>20/10/2024</td>
-                            <td>Vắng</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Phân tích thiết kế phần mềm</td>
-                            <td>SV123</td>
-                            <td>Hệ si si si</td>
-                            <td>06h45</td>
-                            <td>09h25</td>
-                            <td>20/10/2024</td>
-                            <td>Vắng</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Phân tích thiết kế phần mềm</td>
-                            <td>SV123</td>
-                            <td>Hệ si si si</td>
-                            <td>06h45</td>
-                            <td>09h25</td>
-                            <td>20/10/2024</td>
-                            <td>Vắng</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Phân tích thiết kế phần mềm</td>
-                            <td>SV123</td>
-                            <td>Hệ si si si</td>
-                            <td>06h45</td>
-                            <td>09h25</td>
-                            <td>20/10/2024</td>
-                            <td>Vắng</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Phân tích thiết kế phần mềm</td>
-                            <td>SV123</td>
-                            <td>Hệ si si si</td>
-                            <td>06h45</td>
-                            <td>09h25</td>
-                            <td>20/10/2024</td>
-                            <td>Vắng</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Phân tích thiết kế phần mềm</td>
-                            <td>SV123</td>
-                            <td>Hệ si si si</td>
-                            <td>06h45</td>
-                            <td>09h25</td>
-                            <td>20/10/2024</td>
-                            <td>Vắng</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Phân tích thiết kế phần mềm</td>
-                            <td>SV123</td>
-                            <td>Hệ si si si</td>
-                            <td>06h45</td>
-                            <td>09h25</td>
-                            <td>20/10/2024</td>
-                            <td>Vắng</td>
->>>>>>> e37b194 (update)
-                        </tr>
                         @endforeach
                     </tbody>
                 </table>
@@ -347,15 +247,29 @@
                     @else
                     <img src="{{ asset('images/right-arrow.png') }}" width="15px" height="auto" style="opacity: 0.5;" disabled>
                     @endif
-=======
                         @endforeach
                     </tbody>
                 </table>
-                <div class="next-previous-page">
-                    <a href=""><img src="{{ asset('images/arrow-left.png') }}" width="15px" height="auto"></a>
-                    <span style="font-weight: bold;margin:0px 15px;font-size:18px">1</span>
-                    <a href=""><img src="{{ asset('images/right-arrow.png') }}" width="15px" height="auto"></a>
->>>>>>> 9f007ce (update)
+                <div class="next-previous-page pagination-buttons">
+                    @if ($student_attendance_results->onFirstPage())
+                    <img src="{{ asset('images/arrow-left.png') }}" width="15px" height="auto" style="opacity: 0.5;" disabled>
+                    @else
+                    <a href="{{ $student_attendance_results->previousPageUrl() }}">
+                        <img src="{{ asset('images/arrow-left.png') }}" width="15px" height="auto">
+                    </a>
+                    @endif
+
+                    <span style="font-weight: bold; margin: 0px 15px; font-size: 18px">
+                        {{ $student_attendance_results->currentPage() }} / {{ $student_attendance_results->lastPage() }}
+                    </span>
+
+                    @if ($student_attendance_results->hasMorePages())
+                    <a href="{{ $student_attendance_results->nextPageUrl() }}">
+                        <img src="{{ asset('images/right-arrow.png') }}" width="15px" height="auto">
+                    </a>
+                    @else
+                    <img src="{{ asset('images/right-arrow.png') }}" width="15px" height="auto" style="opacity: 0.5;" disabled>
+                    @endif
                 </div>
 
 
