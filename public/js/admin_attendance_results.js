@@ -3,6 +3,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const tabContents = document.querySelectorAll('.tab-content');
 
     if (selectElement) { 
+        const savedValue = localStorage.getItem('selectedTab');
+        if (savedValue) {
+            selectElement.value = savedValue;
+        }
+
         function showTab(tabId) {
             tabContents.forEach(content => {
                 content.style.display = content.id === tabId ? 'block' : 'none';
@@ -10,7 +15,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         selectElement.addEventListener('change', (event) => {
-            showTab(event.target.value);
+            const selectedValue = event.target.value;
+            showTab(selectedValue);
+
+            localStorage.setItem('selectedTab', selectedValue);
         });
 
         showTab(selectElement.value);

@@ -10,7 +10,13 @@ class StudentAttendanceResultController extends Controller
 {
     public function index()
     {
-        // Truy vấn kết quả điểm danh của sinh viên
+        $subjects = StudentAttendanceResult::join('students', 'student_attendance_results.student_id', '=', 'students.student_id')
+        ->join('periods', 'student_attendance_results.period_id', '=', 'periods.period_id')
+        ->join('courses', 'periods.course_name', '=', 'courses.course_name')
+        ->select('courses.subject_name')
+        ->distinct()
+        ->pluck('subject_name');
+
         $student_attendance_results = StudentAttendanceResult::join('students', 'student_attendance_results.student_id', '=', 'students.student_id')
             ->join('periods', 'student_attendance_results.period_id', '=', 'periods.period_id')
             ->join('courses', 'periods.course_name', '=', 'courses.course_name')
@@ -25,7 +31,6 @@ class StudentAttendanceResultController extends Controller
             )
             ->paginate(10);
 
-        // Trả về view với dữ liệu kết quả điểm danh
-        return view('admin.admin_attendance_results', compact('student_attendance_results'));
+        return view('admin.admin_attendance_results', compact('student_attendance_results', 'subjects'));
     }
 }

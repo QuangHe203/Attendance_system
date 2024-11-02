@@ -194,12 +194,9 @@
                     </form>
                     <label for="select-subject" style="font-weight: 100">Chọn môn học: </label>
                     <select id="select-subject">
-                        <option value="subject1">Hệ nhúng 1</option>
-                        <option value="subject2">Hệ nhúng 2</option>
-                        <option value="subject3">Hệ nhúng 3</option>
-                        <option value="subject4">Hệ nhúng 4</option>
-                        <option value="subject5">Hệ nhúng 5</option>
-                        <option value="subject6">Hệ nhúng 6</option>
+                        @foreach ($subjects as $subject)
+                        <option value="{{ $subject }}">{{ $subject }}</option>
+                        @endforeach
                     </select>
                 </div>
                 <table>
@@ -220,7 +217,7 @@
                             <td>{{$student_attendance_result->course_name}}</td>
                             <td>{{$student_attendance_result->subject_name}}</td>
                             <td>{{$student_attendance_result->student_id}}</td>
-                            <td>{{$student_attendance_result->student_name}}</td>
+                            <td style="text-align: start; padding-left: 5px;">{{$student_attendance_result->student_name}}</td>
                             <td>{{$student_attendance_result->time_attendance}}</td>
                             <td>{{$student_attendance_result->date_attendance}}</td>
                             <td>{{$student_attendance_result->status}}</td>

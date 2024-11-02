@@ -9,7 +9,7 @@ class UserController extends Controller
 {
     public function showAccountDetail(Request $request)
     {
-        $accounts = User::all();
+        $accounts = User::where('role', '!=', 'admin')->paginate(10);
         foreach ($accounts as $account) {
             if ($account->role == 'student') {
                 $account->fullname = $account->student ? $account->student->fullname : 'N/A';
@@ -30,7 +30,7 @@ class UserController extends Controller
         $query = $request->input('q');
         $role = $request->input('role');
 
-        $users = User::query();
+        $users = User::where('role', '!=', 'admin');
 
         if ($query) {
             $users->where('user_id', 'like', "%{$query}%")
@@ -41,7 +41,7 @@ class UserController extends Controller
             $roleFilter = $role === 'option2' ? 'teacher' : 'student';
             $users->where('role', $roleFilter);
         }
-        $users = $users->get();
+        $users = $users->paginate(10);
 
         if ($users->count() > 0) {
             $table = '';
@@ -50,22 +50,22 @@ class UserController extends Controller
                     $table .= "
                 <tr>
                     <td style='text-align: start'><img src='{$user->student->image}' width='65' height='auto'></td>
-                    <td>{$user->student->fullname}</td>
-                    <td>{$user->reference_id}</td>
-                    <td>{$user->student->phonenumber}</td>
-                    <td>Sinh viên</td>
-                    <td><a href='" . route('user.edit', $user->reference_id) . "'><img src='" . asset('images/editing.png') . "' width='20px' height='auto'></a></td>
-                    <td><a href='" . route('user.delete', $user->reference_id) . "' onclick='return confirm(\"Bạn có chắc chắn muốn xóa tài khoản này?\");'><img src='" . asset('images/delete.png') . "' width='20px' height='auto'></a></td>
+                    <td style='text-align: start'>{$user->student->fullname}</td>
+                    <td style='text-align: start'>{$user->reference_id}</td>
+                    <td style='text-align: start'>{$user->student->phonenumber}</td>
+                    <td style='text-align: start'>Sinh viên</td>
+                    <td style='text-align: start'><a href='" . route('user.edit', $user->reference_id) . "'><img src='" . asset('images/editing.png') . "' width='20px' height='auto'></a></td>
+                    <td style='text-align: start'><a href='" . route('user.delete', $user->reference_id) . "' onclick='return confirm(\"Bạn có chắc chắn muốn xóa tài khoản này?\");'><img src='" . asset('images/delete.png') . "' width='20px' height='auto'></a></td>
                 </tr>
                 ";
                 } elseif ($user->role == 'teacher') {
                     $table .= "
                 <tr>
                     <td style='text-align: start'><img src='{$user->teacher->image}' width='65' height='auto'></td>
-                    <td>{$user->teacher->fullname}</td>
-                    <td>{$user->reference_id}</td>
-                    <td>{$user->teacher->phonenumber}</td>
-                    <td>Giáo viên</td>
+                    <td style='text-align: start'>{$user->teacher->fullname}</td>
+                    <td style='text-align: start'>{$user->reference_id}</td>
+                    <td style='text-align: start'>{$user->teacher->phonenumber}</td>
+                    <td style='text-align: start'>Giáo viên</td>
                     <td><a href='" . route('user.edit', $user->reference_id) . "'><img src='" . asset('images/editing.png') . "' width='20px' height='auto'></a></td>
                     <td><a href='" . route('user.delete', $user->reference_id) . "' onclick='return confirm(\"Bạn có chắc chắn muốn xóa tài khoản này?\");'><img src='" . asset('images/delete.png') . "' width='20px' height='auto'></a></td>
                 </tr>
@@ -86,7 +86,7 @@ class UserController extends Controller
     public function list(Request $request)
     {
         
-        $users = User::all();
+        $users = User::where('role', '!=', 'admin')->paginate(10);
 
         if ($users->count() > 0) {
             $table = '';
@@ -95,24 +95,24 @@ class UserController extends Controller
                     $table .= "
                 <tr>
                     <td style='text-align: start'><img src='{$user->student->image}' width='65' height='auto'></td>
-                    <td>{$user->student->fullname}</td>
-                    <td>{$user->reference_id}</td>
-                    <td>{$user->student->phonenumber}</td>
-                    <td>Sinh viên</td>
-                    <td><a href='" . route('user.edit', $user->reference_id) . "'><img src='" . asset('images/editing.png') . "' width='20px' height='auto'></a></td>
-                    <td><a href='" . route('user.delete', $user->reference_id) . "' onclick='return confirm(\"Bạn có chắc chắn muốn xóa tài khoản này?\");'><img src='" . asset('images/delete.png') . "' width='20px' height='auto'></a></td>
+                    <td style='text-align: start'>{$user->student->fullname}</td>
+                    <td style='text-align: start'>{$user->reference_id}</td>
+                    <td style='text-align: start'>{$user->student->phonenumber}</td>
+                    <td style='text-align: start'>Sinh viên</td>
+                    <td style='text-align: start'><a href='" . route('user.edit', $user->reference_id) . "'><img src='" . asset('images/editing.png') . "' width='20px' height='auto'></a></td>
+                    <td style='text-align: start'><a href='" . route('user.delete', $user->reference_id) . "' onclick='return confirm(\"Bạn có chắc chắn muốn xóa tài khoản này?\");'><img src='" . asset('images/delete.png') . "' width='20px' height='auto'></a></td>
                 </tr>
                 ";
                 } elseif ($user->role == 'teacher') {
                     $table .= "
                 <tr>
                     <td style='text-align: start'><img src='{$user->teacher->image}' width='65' height='auto'></td>
-                    <td>{$user->teacher->fullname}</td>
-                    <td>{$user->reference_id}</td>
-                    <td>{$user->teacher->phonenumber}</td>
-                    <td>Giáo viên</td>
-                    <td><a href='" . route('user.edit', $user->reference_id) . "'><img src='" . asset('images/editing.png') . "' width='20px' height='auto'></a></td>
-                    <td><a href='" . route('user.delete', $user->reference_id) . "' onclick='return confirm(\"Bạn có chắc chắn muốn xóa tài khoản này?\");'><img src='" . asset('images/delete.png') . "' width='20px' height='auto'></a></td>
+                    <td style='text-align: start'>{$user->teacher->fullname}</td>
+                    <td style='text-align: start'>{$user->reference_id}</td>
+                    <td style='text-align: start'>{$user->teacher->phonenumber}</td>
+                    <td style='text-align: start'>Giáo viên</td>
+                    <td style='text-align: start'><a href='" . route('user.edit', $user->reference_id) . "'><img src='" . asset('images/editing.png') . "' width='20px' height='auto'></a></td>
+                    <td style='text-align: start'><a href='" . route('user.delete', $user->reference_id) . "' onclick='return confirm(\"Bạn có chắc chắn muốn xóa tài khoản này?\");'><img src='" . asset('images/delete.png') . "' width='20px' height='auto'></a></td>
                 </tr>
                 ";
                 }
