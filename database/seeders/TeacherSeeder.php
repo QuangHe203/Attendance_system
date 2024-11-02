@@ -23,8 +23,8 @@ class TeacherSeeder extends Seeder
                 'phonenumber'=>'0354785124',
                 'email'=>'thuynga@gmail.com',
                 'department'=>'Công nghệ thông tin',
-                'created_at'=>now(),
-                'updated_at'=> now(),
+                
+                
             ],
             [
                 'fullname'=>'Hoàng Thị Liên',
@@ -32,8 +32,8 @@ class TeacherSeeder extends Seeder
                 'phonenumber'=>'095471587',
                 'email'=>'thilien@gmail.com',
                 'department'=>'Ngôn ngữ Hàn Quốc',
-                'created_at'=>now(),
-                'updated_at'=> now(),
+                
+                
             ],
         ]);
     }

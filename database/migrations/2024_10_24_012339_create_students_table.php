@@ -13,7 +13,6 @@ return new class extends Migration
      */
     public function up()
     {
-        if (!Schema::hasTable('students')){
             Schema::create('students', function (Blueprint $table) {
                 $table->id('stt');
                 $table->string('student_id')->unique();
@@ -23,10 +22,8 @@ return new class extends Migration
                 $table->string('department', 50);
                 $table->binary('image')->nullable(true);
                 $table->string('year', 10);
-                $table->timestamps();
             });
 
-        }
         
     }
 

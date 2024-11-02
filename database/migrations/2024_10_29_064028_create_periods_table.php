@@ -19,7 +19,6 @@ return new class extends Migration
             $table->dateTime("time_start");
             $table->dateTime("time_end");
             $table->string("location");
-            $table->timestamps();
         });
     }
 

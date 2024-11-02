@@ -22,16 +22,12 @@ class CourseSeeder extends Seeder
                 'teacher_id'=>'Gv01',
                 'subject_name'=>'Phân tích và thiết kế phần mềm',
                 'department'=>'Công nghệ thông tin',
-                'created_at'=>now(),
-                'updated_at'=>now(),
             ],
             [
                 'course_name'=>'Kỹ năng giao tiếp bằng tiếng Hàn N11_2024',
                 'teacher_id'=>'Gv02',
                 'subject_name'=>'Kỹ năng giao tiếp bằng tiếng Hàn',
                 'department'=>'Ngôn ngữ Hàn Quốc',
-                'created_at'=>now(),
-                'updated_at'=>now(),
             ],
         ]);
     }

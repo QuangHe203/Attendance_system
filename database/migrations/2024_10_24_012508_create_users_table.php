@@ -13,7 +13,6 @@ return new class extends Migration
      */
     public function up()
     {
-        if (!Schema::hasTable('users')){
             Schema::create('users', function (Blueprint $table) {
                 $table->id('stt');
                 $table->string('user_id')->unique();
@@ -21,9 +20,7 @@ return new class extends Migration
                 $table->string('password');
                 $table->enum('role', ['admin', 'student', 'teacher']);
                 $table->string('id_reference')->nullable();
-                $table->timestamps();
             });
-        }
         
     }
 
