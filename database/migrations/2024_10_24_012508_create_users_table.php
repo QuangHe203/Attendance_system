@@ -13,17 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        if (!Schema::hasTable('users')){
-            Schema::create('users', function (Blueprint $table) {
-                $table->id('stt');
-                $table->string('user_id')->unique();
-                $table->string('usename', 50)->unique();
-                $table->string('password');
-                $table->enum('role', ['admin', 'student', 'teacher']);
-                $table->string('id_reference')->nullable();
-            });
-        }
-        
+        Schema::create('users', function (Blueprint $table) {
+            $table->id('stt');
+            $table->string('user_id')->unique();
+            $table->string('usename', 50)->unique();
+            $table->string('password');
+            $table->enum('role', ['admin', 'student', 'teacher']);
+            $table->string('id_reference')->nullable();
+        });
     }
 
     /**

@@ -13,20 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        if (!Schema::hasTable('students')){
-            Schema::create('students', function (Blueprint $table) {
-                $table->id('stt');
-                $table->string('student_id')->unique();
-                $table->string('fullname', 50);
-                $table->string('phonenumber', 15);
-                $table->string('email', 50);
-                $table->string('department', 50);
-                $table->binary('image')->nullable(true);
-                $table->string('year', 10);
-            });
-
-        }
-        
+        Schema::create('students', function (Blueprint $table) {
+            $table->id('stt');
+            $table->string('student_id')->unique();
+            $table->string('fullname', 50);
+            $table->string('phonenumber', 15);
+            $table->string('email', 50);
+            $table->string('department', 50);
+            $table->binary('image')->nullable(true);
+            $table->string('year', 10);
+        });
     }
 
     /**

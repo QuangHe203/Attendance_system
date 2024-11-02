@@ -13,17 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        if (!Schema::hasTable('teachers')){
-            Schema::create('teachers', function (Blueprint $table) {
-                $table->id('stt');
-                $table->string('teacher_id')->unique();
-                $table->string('fullname', 50);
-                $table->string('phonenumber', 15);
-                $table->string('email', 50);
-                $table->string('department', 50);
-            });
-        }
-        
+        Schema::create('teachers', function (Blueprint $table) {
+            $table->id('stt');
+            $table->string('teacher_id')->unique();
+            $table->string('fullname', 50);
+            $table->string('phonenumber', 15);
+            $table->string('email', 50);
+            $table->string('department', 50);
+        });
     }
 
     /**
