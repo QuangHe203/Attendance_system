@@ -14,6 +14,7 @@ def main():
     studentIDs = list(all_embeddings.keys())
     stored_embeddings = np.array([np.array(e) for e in all_embeddings.values()])
     threshold = 0.3
+    period_id = 1
     
     if len(stored_embeddings) == 0:
         print("No embeddings found in the database.")
@@ -64,13 +65,14 @@ def main():
                         recognition_counter[studentID] += 1
                     
                     # Nếu nhận diện 3 frame liên tiếp và chưa được điểm danh 
-                    if recognition_counter[studentID] >= 3 and not attendance_confirmed.get(studentID, False):
-                        period_id = 1
-                        time_attend = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+                    if recognition_counter[studentID] >= 3:
+                        time_attend = datetime.now()
 
-                        if not check_if_attendance_exists(student_id = studentID, period_id= period_id):
-                            save_attendance(student_id= studentID, period_id= period_id, time_attend= time_attend)
-                            attendance_confirmed[studentID] = True
+                        # Kiểm tra điểm danh hay chưa
+                        if not check_attendance_exists(student_id=studentID, period_id= period_id):
+                            status = is_on_time(time_start=time_start, time_attend= time_attend)
+                            insert_attendance(studentID, period_id, time_attend, status)
+                            print(f"Student with {studentID} has been marked")
                         else:
                             print(f"Student with {studentID} has been marked before")
                 else:

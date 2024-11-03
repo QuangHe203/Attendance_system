@@ -51,10 +51,14 @@ class StudentListSeeder extends Seeder
             [
                 'course_name'=>'Kỹ năng giao tiếp bằng tiếng Hàn N11_2024',
                 'student_id'=>'Sv09',
+                'created_at'=>now(),
+                'updated_at'=>now(),
             ],
             [
                 'course_name'=>'Kỹ năng giao tiếp bằng tiếng Hàn N11_2024',
                 'student_id'=>'Sv10',
+                'created_at'=>now(),
+                'updated_at'=>now(),
             ],
         ]);
     }

@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-<<<<<<< HEAD
-<<<<<<< HEAD
 use App\Models\StudentAttendanceResult;
 use Illuminate\Support\Facades\DB;
 

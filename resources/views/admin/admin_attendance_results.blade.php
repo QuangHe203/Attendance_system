@@ -213,40 +213,106 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($student_attendance_results as $student_attendance_result)
                         <tr>
-                            <td>{{$student_attendance_result->course_name}}</td>
-                            <td>{{$student_attendance_result->subject_name}}</td>
-                            <td>{{$student_attendance_result->student_id}}</td>
-                            <td style="text-align: start; padding-left: 5px;">{{$student_attendance_result->student_name}}</td>
-                            <td>{{$student_attendance_result->time_attendance}}</td>
-                            <td>{{$student_attendance_result->date_attendance}}</td>
-                            <td>{{$student_attendance_result->status}}</td>
+                            <td>1</td>
+                            <td>Phân tích thiết kế phần mềm</td>
+                            <td>SV123</td>
+                            <td>Hệ si si si</td>
+                            <td>06h45</td>
+                            <td>09h25</td>
+                            <td>20/10/2024</td>
+                            <td>Vắng</td>
+                        </tr>
                         <tr>
-                        @endforeach
-                    </tbody>
-                </table>
-                <div class="next-previous-page pagination-buttons">
-                    @if ($student_attendance_results->onFirstPage())
-                    <img src="{{ asset('images/arrow-left.png') }}" width="15px" height="auto" style="opacity: 0.5;" disabled>
-                    @else
-                    <a href="{{ $student_attendance_results->previousPageUrl() }}">
-                        <img src="{{ asset('images/arrow-left.png') }}" width="15px" height="auto">
-                    </a>
-                    @endif
-
-                    <span style="font-weight: bold; margin: 0px 15px; font-size: 18px">
-                        {{ $student_attendance_results->currentPage() }} / {{ $student_attendance_results->lastPage() }}
-                    </span>
-
-                    @if ($student_attendance_results->hasMorePages())
-                    <a href="{{ $student_attendance_results->nextPageUrl() }}">
-                        <img src="{{ asset('images/right-arrow.png') }}" width="15px" height="auto">
-                    </a>
-                    @else
-                    <img src="{{ asset('images/right-arrow.png') }}" width="15px" height="auto" style="opacity: 0.5;" disabled>
-                    @endif
-                        @endforeach
+                            <td>1</td>
+                            <td>Phân tích thiết kế phần mềm</td>
+                            <td>SV123</td>
+                            <td>Hệ si si si</td>
+                            <td>06h45</td>
+                            <td>09h25</td>
+                            <td>20/10/2024</td>
+                            <td>Vắng</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Phân tích thiết kế phần mềm</td>
+                            <td>SV123</td>
+                            <td>Hệ si si si</td>
+                            <td>06h45</td>
+                            <td>09h25</td>
+                            <td>20/10/2024</td>
+                            <td>Vắng</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Phân tích thiết kế phần mềm</td>
+                            <td>SV123</td>
+                            <td>Hệ si si si</td>
+                            <td>06h45</td>
+                            <td>09h25</td>
+                            <td>20/10/2024</td>
+                            <td>Vắng</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Phân tích thiết kế phần mềm</td>
+                            <td>SV123</td>
+                            <td>Hệ si si si</td>
+                            <td>06h45</td>
+                            <td>09h25</td>
+                            <td>20/10/2024</td>
+                            <td>Vắng</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Phân tích thiết kế phần mềm</td>
+                            <td>SV123</td>
+                            <td>Hệ si si si</td>
+                            <td>06h45</td>
+                            <td>09h25</td>
+                            <td>20/10/2024</td>
+                            <td>Vắng</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Phân tích thiết kế phần mềm</td>
+                            <td>SV123</td>
+                            <td>Hệ si si si</td>
+                            <td>06h45</td>
+                            <td>09h25</td>
+                            <td>20/10/2024</td>
+                            <td>Vắng</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Phân tích thiết kế phần mềm</td>
+                            <td>SV123</td>
+                            <td>Hệ si si si</td>
+                            <td>06h45</td>
+                            <td>09h25</td>
+                            <td>20/10/2024</td>
+                            <td>Vắng</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Phân tích thiết kế phần mềm</td>
+                            <td>SV123</td>
+                            <td>Hệ si si si</td>
+                            <td>06h45</td>
+                            <td>09h25</td>
+                            <td>20/10/2024</td>
+                            <td>Vắng</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Phân tích thiết kế phần mềm</td>
+                            <td>SV123</td>
+                            <td>Hệ si si si</td>
+                            <td>06h45</td>
+                            <td>09h25</td>
+                            <td>20/10/2024</td>
+                            <td>Vắng</td>
+                        </tr>
                     </tbody>
                 </table>
                 <div class="next-previous-page pagination-buttons">
