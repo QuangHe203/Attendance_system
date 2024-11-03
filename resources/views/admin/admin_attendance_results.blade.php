@@ -58,8 +58,7 @@
             </select>
 
             <div id="teacher" class="tab-content">
-                <div class="function-content" name="search-input2">
-                
+                <div class="function-content">
                     <form action="">
                         @csrf
                         <input type="text" placeholder="Tìm kiếm...">
@@ -189,9 +188,9 @@
 
             <div id="student" class="tab-content">
                 <div class="function-content">
-                    <form action="" name="search-input">
+                    <form action="">
                         @csrf
-                        <input type="text" placeholder="Tìm kiếm..." id="search-input" onkeyup="showStudentAttendanceResult(this.value)">
+                        <input type="text" placeholder="Tìm kiếm..." id="search-input" onkeyup="showUser(this.value)">
                     </form>
                     <label for="select-subject" style="font-weight: 100">Chọn môn học: </label>
                     <select id="select-subject">
@@ -212,107 +211,18 @@
                             <td>Tình trạng</td>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="student_attendance_list">
+                        @foreach($student_attendance_results as $student_attendance_result)
                         <tr>
-                            <td>1</td>
-                            <td>Phân tích thiết kế phần mềm</td>
-                            <td>SV123</td>
-                            <td>Hệ si si si</td>
-                            <td>06h45</td>
-                            <td>09h25</td>
-                            <td>20/10/2024</td>
-                            <td>Vắng</td>
+                            <td>{{$student_attendance_result->course_name}}</td>
+                            <td>{{$student_attendance_result->subject_name}}</td>
+                            <td>{{$student_attendance_result->student_id}}</td>
+                            <td style="text-align: start; padding-left: 5px;">{{$student_attendance_result->student_name}}</td>
+                            <td>{{$student_attendance_result->time_attendance}}</td>
+                            <td>{{$student_attendance_result->date_attendance}}</td>
+                            <td>{{$student_attendance_result->status}}</td>
                         </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Phân tích thiết kế phần mềm</td>
-                            <td>SV123</td>
-                            <td>Hệ si si si</td>
-                            <td>06h45</td>
-                            <td>09h25</td>
-                            <td>20/10/2024</td>
-                            <td>Vắng</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Phân tích thiết kế phần mềm</td>
-                            <td>SV123</td>
-                            <td>Hệ si si si</td>
-                            <td>06h45</td>
-                            <td>09h25</td>
-                            <td>20/10/2024</td>
-                            <td>Vắng</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Phân tích thiết kế phần mềm</td>
-                            <td>SV123</td>
-                            <td>Hệ si si si</td>
-                            <td>06h45</td>
-                            <td>09h25</td>
-                            <td>20/10/2024</td>
-                            <td>Vắng</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Phân tích thiết kế phần mềm</td>
-                            <td>SV123</td>
-                            <td>Hệ si si si</td>
-                            <td>06h45</td>
-                            <td>09h25</td>
-                            <td>20/10/2024</td>
-                            <td>Vắng</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Phân tích thiết kế phần mềm</td>
-                            <td>SV123</td>
-                            <td>Hệ si si si</td>
-                            <td>06h45</td>
-                            <td>09h25</td>
-                            <td>20/10/2024</td>
-                            <td>Vắng</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Phân tích thiết kế phần mềm</td>
-                            <td>SV123</td>
-                            <td>Hệ si si si</td>
-                            <td>06h45</td>
-                            <td>09h25</td>
-                            <td>20/10/2024</td>
-                            <td>Vắng</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Phân tích thiết kế phần mềm</td>
-                            <td>SV123</td>
-                            <td>Hệ si si si</td>
-                            <td>06h45</td>
-                            <td>09h25</td>
-                            <td>20/10/2024</td>
-                            <td>Vắng</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Phân tích thiết kế phần mềm</td>
-                            <td>SV123</td>
-                            <td>Hệ si si si</td>
-                            <td>06h45</td>
-                            <td>09h25</td>
-                            <td>20/10/2024</td>
-                            <td>Vắng</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Phân tích thiết kế phần mềm</td>
-                            <td>SV123</td>
-                            <td>Hệ si si si</td>
-                            <td>06h45</td>
-                            <td>09h25</td>
-                            <td>20/10/2024</td>
-                            <td>Vắng</td>
-                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
                 <div class="next-previous-page pagination-buttons">
