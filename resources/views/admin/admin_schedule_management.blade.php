@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{ asset('css/admin_schedule_management.css') }}">
-    <script src="{{ asset('js/admin_schedule_management.js')}}"></script>
+    <link rel="stylesheet" href="{{ asset('css/admin/admin_schedule_management.css') }}">
+    <script src="{{ asset('js/admin/admin_schedule_management.js')}}"></script>
     <title>Quản lí lịch học</title>
 </head>
 

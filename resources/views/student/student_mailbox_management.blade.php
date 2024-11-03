@@ -1,50 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{ asset('css/admin/admin_mailbox_management.css') }}">
+    <link rel="stylesheet" href="{{asset('css/student/student_mailbox_management.css')}}">
+    <script src="{{asset('js/student/student_mailbox_management.js')}}"></script>
     <title>Hòm thư</title>
 </head>
-
 <body>
     <main>
         <div class="sidebar">
-            <img src="{{asset('images/logo-sidebar.png')}}">
+            <img src="{{asset('images/logo-sidebar.png')}}" alt="Logo" class="logo">
             <h3>Hệ thống quản lý</h3>
-            <hr style="margin: 25px 0px;border:1px solid black">
+            <hr style="margin: 25px 0px; border: 1px solid black;">
             <ul>
                 <li>
-                    <a href="{{route('admin.account_management')}}">
-                        <img src="{{asset('images/account-management.png')}}">
-                        <p>Quản lí tài khoản</p>
+                    <a href="{{route('student.account_management')}}">
+                        <img src="{{asset('images/account-management.png')}}" alt="Tài khoản">
+                        <p>Tài khoản</p>
                     </a>
                 </li>
                 <li>
-                    <a href="{{route('admin.schedule_management')}}">
-                        <img src="{{asset('images/school-schedule.png')}}">
-                        <p>Quản lí lịch học</p>
+                    <a href="{{route('student.schedule_management')}}">
+                        <img src="{{asset('images/school-schedule.png')}}" alt="Lịch học">
+                        <p>Lịch học</p>
                     </a>
                 </li>
                 <li>
-                    <a href="{{route('admin.attendance_results')}}">
-                        <img src="{{asset('images/result.png')}}">
-                        <p>Kết quả điểm danh</p>
+                    <a href="{{route('student.attendance_results')}}">
+                        <img src="{{asset('images/result.png')}}" alt="Điểm danh">
+                        <p>Điểm danh</p>
                     </a>
                 </li>
-                <li style="background-color:#58a6b2;">
-                    <a href="{{route('admin.mailbox_management')}}">
-                        <img src="{{asset('images/mailbox.png')}}">
+                <li style="background-color: #58a6b2;">
+                    <a href="{{route('student.mailbox_management')}}">
+                        <img src="{{asset('images/mailbox.png')}}" alt="Hòm thư">
                         <p>Hòm thư</p>
                     </a>
                 </li>
             </ul>
-            <form action="" method="POST">
-                @csrf
-                <button type="submit">Đăng xuất</button>
-            </form>
         </div>
 
         <div class="content">
@@ -93,7 +88,7 @@
                                 <option value="teacher">Giảng viên</option>
                             </select>
                             {{-- Hiển thị tên đối tượng sau khi chọn --}}
-                            <span>Tên đối tượng sau khi chọn</span>
+                            <span>Học sinh</span>
                             <!-- Dữ liệu học sinh giả -->
                             <ul id="student-options" style="display: none;">
                                 <li>Trần Minh Hiếu</li>
@@ -140,10 +135,10 @@
                 <div class="container-email-item">
                     @for ($i = 0; $i < 11; $i++) 
                         <div class="email-item" onclick="showEmailContent('{{ $i }}')">
-                            <p>20/10</p>
-                            <p>Nguyễn Quuang Hê , Trânf Minh Hiếu</p>
-                            <p>Tiêu đề của maillllllllllllllllll</p>
-                            <p>Nội dungggggggggggggggggggggggggggggggggggggggggggggggg</p>
+                            <p>03/11/2024</p>
+                            <p>Người gửi: Nguyễn Quang Hệ , Người nhận: Trần Minh Hiếu</p>
+                            <p><Table>TIÊU ĐỀ CỦA MAIL</Table></p>
+                            <p>Nội dung: Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi in, commodi illum optio hic corrupti quae, deleniti fugiat maiores quaerat voluptatum labore at sunt. Incidunt saepe distinctio ad natus dolor.</p>
                         </div>
                     @endfor
                 </div>
@@ -153,12 +148,11 @@
                     @for ($i = 0; $i < 11; $i++) 
                         <div id="email{{ $i }}" class="email-content " >
                             <div class="email-content-detail">
-                                <p>Email {{ $i + 1 }}</p>
-                                <p>20/10</p>
-                                <p>Nguyễn Quuang Hê , Trânf Minh Hiếu</p>
-                                <p>Tiêu đề của maillllllllllllllllll</p>
-                                <p>alo alo alo alo alo alo alo alo alo alo alo aloalo alo alo alo alo alo alo alo alo alo alo alo alo alo alo alo alo alo alo alo alo alo alo alo</p>
-                            </div>
+                            <p>03/11/2024</p>
+                            <p>Người gửi: Nguyễn Quang Hệ , Người nhận: Trần Minh Hiếu</p>
+                            <p>TIÊU ĐỀ CỦA MAIL</p>
+                            <p>Nội dung: Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi in, commodi illum optio hic corrupti quae, deleniti fugiat maiores quaerat voluptatum labore at sunt. Incidunt saepe distinctio ad natus dolor.</p>
+                        </div>
 
                             <div class="email-reply-delete">
                                 <img src="{{asset('images/reply.png')}}" >
@@ -171,7 +165,5 @@
 
         </div>
     </main>
-    <script src="{{ asset('js/admin_mailbox_management.js') }}"></script>
 </body>
-
 </html>

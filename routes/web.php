@@ -50,3 +50,23 @@ Route::get('/send-message', [MessageController::class, 'showForm'])->name('send.
 Route::post('/send-message', [MessageController::class, 'sendMessage'])->name('send.message');
 
 Route::get('/sent-messages', [MessageController::class, 'viewSentMessages'])->name('sent.messages');
+
+#TEACHER
+#ACCOUNT MANAGEMENT
+Route::get('/teacher_account_management', function(){return view('teacher.teacher_account_management');})->name('teacher.account_management');
+#SCHEDULE MANAGEMENT
+Route::get('/teacher_schedule_management', function(){return view('teacher.teacher_schedule_management');})->name('teacher.schedule_management');
+#ATTENDANCE RESULT
+Route::get('/teacher_attendance_result_management', function(){return view('teacher.teacher_attendance_results');})->name('teacher.attendance_results');
+#MAILBOX MANAGEMENT
+Route::get('/teacher_mailbox_management', function(){return view('teacher.teacher_mailbox_management');})->name('teacher.mailbox_management');
+
+#Student
+#ACCOUNT MANAGEMENT
+Route::get('/student_account_management', function(){return view('student.student_account_management');})->name('student.account_management');
+#SCHEDULE MANAGEMENT
+Route::get('/student_schedule_management', function(){return view('student.student_schedule_management');})->name('student.schedule_management');
+#ATTENDANCE RESULT
+Route::get('/student_attendance_result_management', function(){return view('student.student_attendance_results');})->name('student.attendance_results');
+#MAILBOX MANAGEMENT
+Route::get('/student_mailbox_management', function(){return view('student.student_mailbox_management');})->name('student.mailbox_management');

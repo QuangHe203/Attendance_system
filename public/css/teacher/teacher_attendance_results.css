@@ -1,0 +1,184 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+main {
+    display: flex;
+    font-family: 'Roboto',sans-serif;
+}
+
+.sidebar {
+    text-align: center;
+    background-color: #a8daeb;   
+    height: 100vh; 
+}
+.sidebar img {
+    width: 150px;
+    margin: 30px 35px 20px 35px;
+}
+.sidebar ul li {
+    list-style: none;
+    color: black;
+    border: 1px ;
+    border-radius: 5px;
+    margin: 15px 20px;
+    padding: 10px ;
+    cursor: pointer;
+}
+.sidebar ul li img {
+    width: 20px;
+    padding: 0;
+    margin: 0;
+    margin-right: 10px;
+    display: block;
+}
+.sidebar ul li p {
+    font-size: 16px;
+}
+.sidebar ul li:hover {
+    background-color: #58a6b2;
+}
+.sidebar ul li a {
+    display: flex;
+    text-decoration: none;
+    color: black;
+}
+.content {
+    flex: 1;    
+}
+.select-for-teacher {
+    height: 8vh;
+    border-radius: 10px;
+    box-shadow: 0 0 12px rgba(130, 130, 130, 0.4);
+    margin:20px 20px 0px 20px;
+    padding: 15px 0px 15px 30px;
+}
+.select-for-teacher select {
+    width: 13%;
+    height: 30px;
+    border-radius: 5px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+.main-container {
+    display: flex;
+    height: 85vh;
+}
+
+.function-attendance {
+    height: 80vh;
+    width: 30%;
+    border-radius: 10px;
+    margin: 15px 20px;
+    box-shadow: 0 0 12px rgba(130, 130, 130, 0.4);
+}
+.function-attendance form {
+    margin: 15px 0px 15px 20px;
+}
+.function-attendance form select {
+    border-radius: 5px;
+    height: 30px;
+    width: 150px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+
+.semester-content {
+    /* border: 1px solid black; */
+    margin: 20px 0px;
+    padding: 0px 20px;
+    width: 100%;
+}
+.semester-content p {
+    margin-bottom: 10px;
+}
+.subject {
+    border: 1px solid gray ;
+    border-bottom: none;
+    height: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.subject p {
+    padding: 10px;
+}
+.subject:last-of-type {
+    border-bottom: 1px solid black;
+}
+.subject:hover {
+    background-color: #7cd4df6d;
+}
+.active {
+    background-color: #7cd4df6d;
+}
+
+
+.display-attendance {
+    width: 70%;
+    /* box-shadow: 0 0 12px rgba(130, 130, 130, 0.4);
+    border-radius: 10px; */
+    margin: 15px 20px;
+    overflow-y: auto;
+    /* height: 100vh; */
+}
+
+.display-attendance table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid black;
+    margin-bottom: 50px;
+}
+.display-attendance thead tr td {
+    font-weight: bold;
+}
+.display-attendance tr,td {
+    border: 1px solid black;
+    text-align: center;
+    padding: 10px 0px;
+}
+.display-attendance table img {
+    width: 20px;
+    cursor: pointer;
+    object-fit: contain;
+}
+.display-attendance::-webkit-scrollbar,
+.container-attendance-teacher::-webkit-scrollbar {
+    width: 10px; /* Độ rộng thanh cuộn */
+}
+
+.display-attendance::-webkit-scrollbar-track,
+.container-attendance-teacher::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Màu nền của thanh cuộn */
+    border-radius: 5px;
+}
+
+.display-attendance::-webkit-scrollbar-thumb,
+.container-attendance-teacher::-webkit-scrollbar-thumb {
+    background-color: #888; /* Màu của thanh cuộn */
+    border-radius: 4px;
+    border: 1px solid #f1f1f1; /* Viền bên trong */
+}
+
+.display-attendance::-webkit-scrollbar-thumb:hover,
+.container-attendance-teacher::-webkit-scrollbar-thumb:hover {
+    background-color: #555; 
+    cursor: pointer;
+}
+
+
+/* container-attendance-teacher */
+.container-attendance-teacher {
+    height: 85vh;
+    margin: 15px 20px;
+    overflow-y: auto;
+}
+.container-attendance-teacher table {
+    border-collapse: collapse;
+    width: 100%;
+}
+.container-attendance-teacher table thead td {
+    font-weight: bold;
+}
