@@ -39,13 +39,10 @@ Route::get('/admin_schedule_management', function() { return view('admin.admin_s
 
 #ATTENDANCE RESULT
 Route::get('/admin_attendance_management', [StudentAttendanceResultController::class, 'index'])->name('admin.attendance_results');
-<<<<<<< HEAD
-Route::get('/attendance_result/list', [StudentAttendanceResultController::class, 'list'])->name('admin.attendance_results.list');
-Route::get('/attendance_result/search', [StudentAttendanceResultController::class, 'search'])->name('admin.attendance_results.search');
-Route::get('/attendance_result/edit', function() {})->name('user.edit');
-Route::get('/attendance_result/delete', function() {})->name('user.delete');
-=======
->>>>>>> 9f007ce (update)
+Route::get('/atendance_result/list', [StudentAttendanceResultController::class, 'list'])->name('admin.attendance_results.list');
+Route::get('/atendance_result/search', [StudentAttendanceResultController::class, 'search'])->name('admin.attendance_results.search');
+Route::get('/atendance_result/edit', function() {})->name('user.edit');
+Route::get('/atendance_result/delete', function() {})->name('user.delete');
 
 #MAILBOX MANAGEMENT
 Route::get('/admin_mailbox_management', function() {return view('admin.admin_mailbox_management'); })->name('admin.mailbox_management');

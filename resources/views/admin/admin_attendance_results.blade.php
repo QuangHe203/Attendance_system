@@ -212,8 +212,7 @@
                             <td>Tình trạng</td>
                         </tr>
                     </thead>
-                    <tbody id="student_attendance_list">
-
+                    <tbody>
                         @foreach($student_attendance_results as $student_attendance_result)
                         <tr>
                             <td>{{$student_attendance_result->course_name}}</td>
