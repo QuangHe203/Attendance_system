@@ -21,7 +21,6 @@ return new class extends Migration
                 $table->string('password');
                 $table->enum('role', ['admin', 'student', 'teacher']);
                 $table->string('id_reference')->nullable();
-                $table->timestamps();
             });
         }
         

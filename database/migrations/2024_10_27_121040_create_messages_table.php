@@ -20,7 +20,6 @@ return new class extends Migration
                 $table->string('id_receiver', 20);
                 $table->string('title');
                 $table->text('content');
-                $table->timestamps();
             });
         }
         

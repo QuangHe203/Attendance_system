@@ -17,7 +17,6 @@ return new class extends Migration
             Schema::create('admins', function (Blueprint $table) {
                 $table->id('stt');
                 $table->string('admin_id')->unique();
-                $table->timestamps();
             });
         }
         

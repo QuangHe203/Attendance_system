@@ -19,7 +19,6 @@ return new class extends Migration
                 $table->string('teacher_id', 50);
                 $table->string('subject_name', 50);
                 $table->string('department', 50);
-                $table->timestamps();
             });
         }
         

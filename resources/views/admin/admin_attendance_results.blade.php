@@ -58,7 +58,7 @@
             </select>
 
             <div id="teacher" class="tab-content">
-                <div class="function-content">
+                <div class="function-content" name="search-input2">
                     <form action="">
                         @csrf
                         <input type="text" placeholder="Tìm kiếm...">
@@ -188,9 +188,9 @@
 
             <div id="student" class="tab-content">
                 <div class="function-content">
-                    <form action="">
+                    <form action="" name="search-input">
                         @csrf
-                        <input type="text" placeholder="Tìm kiếm..." id="search-input" onkeyup="showUser(this.value)">
+                        <input type="text" placeholder="Tìm kiếm..." id="search-input" onkeyup="showStudentAttendanceResult(this.value)">
                     </form>
                     <label for="select-subject" style="font-weight: 100">Chọn môn học: </label>
                     <select id="select-subject">
