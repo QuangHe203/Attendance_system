@@ -190,7 +190,7 @@
                 <div class="function-content">
                     <form action="">
                         @csrf
-                        <input type="text" placeholder="Tìm kiếm...">
+                        <input type="text" placeholder="Tìm kiếm..." id="search-input" onkeyup="showUser(this.value)">
                     </form>
                     <label for="select-subject" style="font-weight: 100">Chọn môn học: </label>
                     <select id="select-subject">
@@ -211,7 +211,7 @@
                             <td>Tình trạng</td>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="student_attendance_list">
                         @foreach($student_attendance_results as $student_attendance_result)
                         <tr>
                             <td>{{$student_attendance_result->course_name}}</td>
