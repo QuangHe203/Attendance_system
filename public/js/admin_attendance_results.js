@@ -26,3 +26,28 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error("Không tìm thấy phần tử với id 'tab-select'.");
     }
 });
+
+function showUser(query) {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            var response = JSON.parse(this.responseText);
+            if (response.table) {
+                document.getElementById("student_attendance_list").innerHTML =
+                    response.table;
+            } else {
+                document.getElementById("student_attendance_list").innerHTML =
+                    "<b>" +
+                    response.message +
+                    "</b>";
+            }
+        }
+    };
+
+    if (query === "") {
+        xmlhttp.open("GET", "/atendance_result/list", true);
+    } else {
+        xmlhttp.open("GET", "/atendance_result/search?q=" + query, true);
+    }
+    xmlhttp.send();
+}
