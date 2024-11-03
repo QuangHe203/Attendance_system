@@ -61,16 +61,14 @@
                 <div class="function-content">
                     <form action="">
                         @csrf
-                        <input type="text" placeholder="Tìm kiếm...">
+                        <input type="text" placeholder="Tìm kiếm theo ID..." id="search-teacherId" onkeyup="showTeacherAttendanceResults()">
                     </form>
-                    <label for="select-subject" style="font-weight: 100">Khoa: </label>
-                    <select id="select-subject">
-                        <option value="subject1">Công nghệ thông tin 1</option>
-                        <option value="subject1">Công nghệ thông tin 2</option>
-                        <option value="subject1">Công nghệ thông tin 3</option>
-                        <option value="subject1">Công nghệ thông tin 4</option>
-                        <option value="subject1">Công nghệ thông tin 5</option>
-                        <option value="subject1">Công nghệ thông tin 6</option>
+                    <label for="select-department" style="font-weight: 100">Khoa: </label>
+                    <select id="select-department" onchange="showTeacherAttendanceResults()">
+                        <option value="">Tất cả</option>
+                        @foreach ($departments as $department)
+                            <option value="{{ $department }}">{{ $department }}</option>
+                            @endforeach
                     </select>
                 </div>
 
@@ -86,97 +84,18 @@
                             <td style="width: 140px">Giờ điểm danh</td>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="teacher_attendance_list">
+                    @foreach($teacher_attendance_results as $teacher_attendance_result)
                         <tr>
-                            <td>1</td>
-                            <td>GV123</td>
-                            <td>Nguyễn Quang Hệ</td>
-                            <td>He@gmail.com</td>
-                            <td>Công nghệ thông tin</td>
-                            <td>20/10/2024</td>
-                            <td>09h30</td>
+                            <td>{{$teacher_attendance_result->period_id}}</td>
+                            <td>{{$teacher_attendance_result->teacher_id}}</td>
+                            <td style="text-align: start; padding-left: 5px;">{{$teacher_attendance_result->teacher_name}}</td>
+                            <td>{{$teacher_attendance_result->email}}</td>
+                            <td>{{$teacher_attendance_result->department}}</td>
+                            <td>{{$teacher_attendance_result->date_attendance}}</td>
+                            <td>{{$teacher_attendance_result->time_attendance}}</td>
                         </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>GV123</td>
-                            <td>Nguyễn Quang Hệ</td>
-                            <td>He@gmail.com</td>
-                            <td>Công nghệ thông tin</td>
-                            <td>20/10/2024</td>
-                            <td>09h30</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>GV123</td>
-                            <td>Nguyễn Quang Hệ</td>
-                            <td>He@gmail.com</td>
-                            <td>Công nghệ thông tin</td>
-                            <td>20/10/2024</td>
-                            <td>09h30</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>GV123</td>
-                            <td>Nguyễn Quang Hệ</td>
-                            <td>He@gmail.com</td>
-                            <td>Công nghệ thông tin</td>
-                            <td>20/10/2024</td>
-                            <td>09h30</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>GV123</td>
-                            <td>Nguyễn Quang Hệ</td>
-                            <td>He@gmail.com</td>
-                            <td>Công nghệ thông tin</td>
-                            <td>20/10/2024</td>
-                            <td>09h30</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>GV123</td>
-                            <td>Nguyễn Quang Hệ</td>
-                            <td>He@gmail.com</td>
-                            <td>Công nghệ thông tin</td>
-                            <td>20/10/2024</td>
-                            <td>09h30</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>GV123</td>
-                            <td>Nguyễn Quang Hệ</td>
-                            <td>He@gmail.com</td>
-                            <td>Công nghệ thông tin</td>
-                            <td>20/10/2024</td>
-                            <td>09h30</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>GV123</td>
-                            <td>Nguyễn Quang Hệ</td>
-                            <td>He@gmail.com</td>
-                            <td>Công nghệ thông tin</td>
-                            <td>20/10/2024</td>
-                            <td>09h30</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>GV123</td>
-                            <td>Nguyễn Quang Hệ</td>
-                            <td>He@gmail.com</td>
-                            <td>Công nghệ thông tin</td>
-                            <td>20/10/2024</td>
-                            <td>09h30</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>GV123</td>
-                            <td>Nguyễn Quang Hệ</td>
-                            <td>He@gmail.com</td>
-                            <td>Công nghệ thông tin</td>
-                            <td>20/10/2024</td>
-                            <td>09h30</td>
-                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
                 <div class="next-previous-page">
@@ -187,18 +106,19 @@
             </div>
 
             <div id="student" class="tab-content">
-                <div class="function-content">
-                    <form action="">
-                        @csrf
-                        <input type="text" placeholder="Tìm kiếm..." id="search-input" onkeyup="showUser(this.value)">
-                    </form>
-                    <label for="select-subject" style="font-weight: 100">Chọn môn học: </label>
-                    <select id="select-subject">
-                        @foreach ($subjects as $subject)
-                        <option value="{{ $subject }}">{{ $subject }}</option>
-                        @endforeach
-                    </select>
-                </div>
+                    <div class="function-content">
+                        <form action="">
+                            @csrf
+                            <input type="text" placeholder="Tìm kiếm theo ID sinh viên..." id="search-studentId" onkeyup="showStudentAttendanceResults()">
+                        </form>
+                        <label for="select-subject" style="font-weight: 100">Chọn môn học: </label>
+                        <select id="select-subject" onchange="showStudentAttendanceResults()">
+                            <option value="">Tất cả</option>
+                            @foreach ($subjects as $subject)
+                            <option value="{{ $subject }}">{{ $subject }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                 <table>
                     <thead>
                         <tr>

@@ -27,7 +27,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-function showUser(query) {
+function showStudentAttendanceResults() {
+    var student_id = document.getElementById("search-studentId").value;
+    var subject = document.getElementById("select-subject").value;
+
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
@@ -37,17 +40,39 @@ function showUser(query) {
                     response.table;
             } else {
                 document.getElementById("student_attendance_list").innerHTML =
-                    "<b>" +
-                    response.message +
-                    "</b>";
+                    "<b>" + response.message + "</b>";
             }
         }
     };
 
-    if (query === "") {
-        xmlhttp.open("GET", "/atendance_result/list", true);
+    /*if (student_id === "") {
+        xmlhttp.open("GET", "/attendance_result/list", true);
     } else {
-        xmlhttp.open("GET", "/atendance_result/search?q=" + query, true);
+        xmlhttp.open("GET", "/attendance_result/search?student_id=" + student_id + "&subject=" + subject, true);
     }
+        */
+    xmlhttp.open("GET", "/student_attendance_result/search?student_id=" + student_id + "&subject=" + subject, true);
+    xmlhttp.send();
+}
+
+function showTeacherAttendanceResults() {
+    var teacher_id = document.getElementById("search-teacherId").value;
+    var department = document.getElementById("select-department").value;
+
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            var response = JSON.parse(this.responseText);
+            if (response.table) {
+                document.getElementById("teacher_attendance_list").innerHTML =
+                    response.table;
+            } else {
+                document.getElementById("teacher_attendance_list").innerHTML =
+                    "<b>" + response.message + "</b>";
+            }
+        }
+    };
+    
+    xmlhttp.open("GET", "/teacher_attendance_result/search?teacher_id=" + teacher_id + "&department=" + department, true);
     xmlhttp.send();
 }
