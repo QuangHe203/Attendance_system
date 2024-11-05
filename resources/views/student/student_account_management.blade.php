@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <script src="{{ asset('js/student/student_account_management.js')}}"></script>
     <title>Tài khoản</title>
 </head>
+
 <body>
     <main>
         <div class="sidebar">
@@ -47,36 +49,42 @@
             <div class="info-container">
                 <h2>Thông Tin Tài Khoản</h2>
                 <div class="info-image">
-                    <img src="https://lh4.googleusercontent.com/proxy/QEaRteD63NfUL5Wxb1p7e1ANAZFcUCktVv6rG4uErupF7jb3UFsSX1JgFKvLJuQQJixASNXMAzdHP8hSiNA90cv49M227_vuLLrEG_pgrkWbzDDPAM_0BfQR51j_mV2iaR53iOf6W5Y48E7O43NwlH7HffoK" class="image-user" id="profileImage">
+                    @if ($user->image)
+                    <img src="data:image/jpeg;base64,{{ base64_encode($user->image) }}" class="image-user" id="profileImage">
+                    @else
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/2048px-Default_pfp.svg.png" class="image-user" id="profileImage">
+                    <h6 style="color: red;">*Vui lòng cập nhật ảnh</h6>
+                    @endif
+
                     <span id="uploadSpan" style="cursor: pointer;">
                         <img src="{{asset('images/pencil.png')}}">
                     </span>
                     <input type="file" id="fileInput" style="display: none;" accept="image/*">
                 </div>
-                
-                
+
+
                 <div class="info-user">
                     <label for="id-user">ID Sinh viên: </label>
-                    <span>SV123</span>
+                    <span>{{ $user->reference_id}}</span>
                 </div>
                 <div class="info-user">
                     <label for="name">Họ và Tên: </label>
-                    <span>Nguyễn Quang Hệ</span>
+                    <span>{{ $user->fullname}}</span>
                 </div>
                 <div class="info-user">
                     <label for="phone">Số điện thoại: </label>
-                    <span>0377559911</span>
+                    <span>{{ $user->phonenumber}}</span>
                 </div>
                 <div class="info-user">
                     <label for="email">Email: </label>
-                    <span>quanghe@gmail.com</span>
+                    <span>{{ $user->email}}</span>
                 </div>
                 <div class="info-user">
                     <label for="username">Tên đăng nhập: </label>
-                    <span>nguyenquanghe</span>
+                    <span>{{ $user->usename}}</span>
                 </div>
 
-                <form action="" method="POST">
+                <form action="{{ route('logout') }}" method="POST">
                     @csrf
                     <button type="submit" class="logout-button">Đăng xuất</button>
                 </form>
@@ -84,4 +92,5 @@
         </div>
     </main>
 </body>
+
 </html>

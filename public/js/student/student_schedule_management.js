@@ -1,5 +1,5 @@
-let currentMonth = new Date().getMonth() + 1;
-let currentYear = new Date().getFullYear();
+//let currentMonth = new Date().getMonth() + 1;
+//let currentYear = new Date().getFullYear();
 
 // Hiển thị lịch nhỏ
 window.loadCalendar = function (month, year) {

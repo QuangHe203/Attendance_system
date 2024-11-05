@@ -41,7 +41,6 @@ class StudentAttendanceResultController extends Controller
                 'teacher_attendance_results.period_id',
                 'teachers.teacher_id',
                 'teachers.fullname as teacher_name', // đổi tên cột để tránh nhầm lẫn với student_name
-                'teachers.email',
                 'teachers.department',
                 DB::raw('DATE(teacher_attendance_results.time_attend) as date_attendance'),
                 DB::raw('TIME(teacher_attendance_results.time_attend) as time_attendance'),

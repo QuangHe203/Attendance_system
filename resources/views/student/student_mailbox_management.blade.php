@@ -88,7 +88,7 @@
                                 <option value="teacher">Giảng viên</option>
                             </select>
                             {{-- Hiển thị tên đối tượng sau khi chọn --}}
-                            <span>Học sinh</span>
+                            <span>Tên đối tượng sau khi chọn</span>
                             <!-- Dữ liệu học sinh giả -->
                             <ul id="student-options" style="display: none;">
                                 <li>Trần Minh Hiếu</li>
@@ -135,10 +135,10 @@
                 <div class="container-email-item">
                     @for ($i = 0; $i < 11; $i++) 
                         <div class="email-item" onclick="showEmailContent('{{ $i }}')">
-                            <p>03/11/2024</p>
-                            <p>Người gửi: Nguyễn Quang Hệ , Người nhận: Trần Minh Hiếu</p>
-                            <p><Table>TIÊU ĐỀ CỦA MAIL</Table></p>
-                            <p>Nội dung: Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi in, commodi illum optio hic corrupti quae, deleniti fugiat maiores quaerat voluptatum labore at sunt. Incidunt saepe distinctio ad natus dolor.</p>
+                            <p>20/10</p>
+                            <p>Nguyễn Quuang Hê , Trânf Minh Hiếu</p>
+                            <p>Tiêu đề của maillllllllllllllllll mail mail mail mail mail mail mail mail mail mail mail</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus exercitationem laborum tempore reprehenderit optio fugit quo debitis animi, labore consectetur eveniet odio ratione quisquam ducimus non laboriosam modi quae ipsum?</p>
                         </div>
                     @endfor
                 </div>
@@ -148,11 +148,12 @@
                     @for ($i = 0; $i < 11; $i++) 
                         <div id="email{{ $i }}" class="email-content " >
                             <div class="email-content-detail">
-                            <p>03/11/2024</p>
-                            <p>Người gửi: Nguyễn Quang Hệ , Người nhận: Trần Minh Hiếu</p>
-                            <p>TIÊU ĐỀ CỦA MAIL</p>
-                            <p>Nội dung: Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi in, commodi illum optio hic corrupti quae, deleniti fugiat maiores quaerat voluptatum labore at sunt. Incidunt saepe distinctio ad natus dolor.</p>
-                        </div>
+                                <p>Email {{ $i + 1 }}</p>
+                                <p>20/10</p>
+                                <p>Nguyễn Quuang Hê , Trânf Minh Hiếu>Nguyễn Quuang Hê , Trânf Minh Hiếu>Nguyễn Quuang Hê , Trânf Minh Hiếu>Nguyễn Quuang Hê , Trânf Minh Hiếu>Nguyễn Quuang Hê , Trânf Minh Hiếu</p>
+                                <p>Tiêu đề của maillllllllllllllllll  mail mail mail mail mail mail mail mail mail mail mail mail mail mail mail mail mail mail mail mail mail mail mail mail mail</p>
+                                <p>alo alo alo alo alo alo alo alo alo alo alo aloalo alo alo alo alo alo alo alo alo alo alo alo alo alo alo alo alo alo alo alo alo alo alo aloo alo alo alo alo alo aloo alo alo alo alo alo aloo alo alo alo alo alo aloo alo alo alo alo alo aloo alo alo alo alo alo aloo alo alo alo alo alo alo</p>
+                            </div>
 
                             <div class="email-reply-delete">
                                 <img src="{{asset('images/reply.png')}}" >
@@ -165,5 +166,6 @@
 
         </div>
     </main>
+    
 </body>
 </html>

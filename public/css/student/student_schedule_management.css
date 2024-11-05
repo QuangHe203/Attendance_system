@@ -164,5 +164,42 @@ td {
     background-color: lightblue;
 }
 
-
+.calendar-container {
+    width: 300px;
+    margin: 20px auto;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+.display-month-year {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.display-month-year img {
+    width: 20px;
+    cursor: pointer;
+}
+#month-year {
+    margin: 0 10px;
+    font-weight: bold;
+    font-size: 18px;
+}
+#calendar-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+#calendar-table thead tr {
+    background-color: #f2f2f2;
+}
+#calendar-table td {
+    width: 14.28%;
+    height: 40px;
+    text-align: center;
+    border: 1px solid #ddd;
+    cursor: pointer;
+}
+#calendar-table tbody td.empty {
+    background-color: #f9f9f9;
+}
 

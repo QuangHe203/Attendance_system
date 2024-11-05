@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +10,9 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>Lịch học</title>
 </head>
+
 <body>
+
     <main>
         <div class="sidebar">
             <img src="{{asset('images/logo-sidebar.png')}}" alt="Logo" class="logo">
@@ -44,10 +47,10 @@
         </div>
 
         <div class="content">
-        
+
             <div id="week-display">
                 <h3 style="display:none">Tuần chứa ngày: <span id="selected-day"></span></h3>
-                
+
                 {{-- Dùng để hiển thị thứ trong tuần khi clink vào lịch --}}
                 <ul id="week-list"></ul>
 
@@ -83,59 +86,59 @@
                     <div class="day-schedule monday">
                         @for ($i=0;$i<27;$i++)
                             <hr>
-                        @endfor
-                        {{-- Hiển thị lịch học cho thứ 2 --}}
-                        <span></span>
+                            @endfor
+                            {{-- Hiển thị lịch học cho thứ 2 --}}
+                            <span></span>
                     </div>
                     <div class="day-schedule tuesday">
                         @for ($i=0;$i<27;$i++)
-                        <hr>
-                        @endfor
-                        {{-- Hiển thị lịch học cho thứ 3 --}}
-                        <span></span>
+                            <hr>
+                            @endfor
+                            {{-- Hiển thị lịch học cho thứ 3 --}}
+                            <span></span>
                     </div>
                     <div class="day-schedule wednesday">
                         @for ($i=0;$i<27;$i++)
-                        <hr>
-                        @endfor
-                        {{-- Hiển thị lịch học cho thứ 4 --}}
-                        <span></span>
+                            <hr>
+                            @endfor
+                            {{-- Hiển thị lịch học cho thứ 4 --}}
+                            <span></span>
                     </div>
                     <div class="day-schedule thursday">
                         @for ($i=0;$i<27;$i++)
-                        <hr>
-                        @endfor
-                        {{-- Hiển thị lịch học cho thứ 5 --}}
-                        <span></span>
+                            <hr>
+                            @endfor
+                            {{-- Hiển thị lịch học cho thứ 5 --}}
+                            <span></span>
                     </div>
                     <div class="day-schedule friday">
                         @for ($i=0;$i<27;$i++)
-                        <hr>
-                        @endfor
-                        {{-- Hiển thị lịch học cho thứ 6 --}}
-                        <span></span>
+                            <hr>
+                            @endfor
+                            {{-- Hiển thị lịch học cho thứ 6 --}}
+                            <span></span>
                     </div>
                     <div class="day-schedule saturday">
                         @for ($i=0;$i<27;$i++)
-                        <hr>
-                        @endfor
-                        {{-- Hiển thị lịch học cho thứ 7 --}}
-                        <span></span>
+                            <hr>
+                            @endfor
+                            {{-- Hiển thị lịch học cho thứ 7 --}}
+                            <span></span>
                     </div>
                     <div class="day-schedule sunday" style="border-right:1px solid rgb(192, 192, 192)">
                         @for ($i=0;$i<27;$i++)
-                        <hr>
-                        @endfor
+                            <hr>
+                            @endfor
                     </div>
                 </div>
 
             </div>
-        
+
             <div class="calendar-container">
                 <div class="display-month-year">
-                    <img id="prev" src="{{asset('images/arrow-left.png')}}">
+                    <img id="prev" src="images/arrow-left.png">
                     <span id="month-year"></span>
-                    <img id="next" src="{{asset('images/right-arrow.png')}}">
+                    <img id="next" src="images/right-arrow.png">
                 </div>
                 <table id="calendar-table">
                     <thead>
@@ -149,8 +152,8 @@
                             <td>CN</td>
                         </tr>
                     </thead>
-                    <tbody>
-                        <!-- Dữ liệu sẽ được thêm vào đây bằng JavaScript -->
+                    <tbody id="calendar-body">
+                        <!-- Các ngày sẽ được thêm tự động qua JavaScript -->
                     </tbody>
                 </table>
             </div>
@@ -158,4 +161,5 @@
         </div>
     </main>
 </body>
+
 </html>

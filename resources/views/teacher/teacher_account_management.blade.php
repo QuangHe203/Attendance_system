@@ -80,7 +80,7 @@
                     <span>Hesii</span>
                 </div>
 
-                <form action="" method="POST">
+                <form action="{{ route('logout') }}" method="POST">
                     @csrf
                     <button type="submit" class="logout-button">Đăng xuất</button>
                 </form>

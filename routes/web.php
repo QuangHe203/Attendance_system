@@ -3,7 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\StudentAttendanceResultController;
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherAttendanceResultController;
 use App\Http\Controllers\UserController;
 
@@ -63,9 +65,9 @@ Route::get('/teacher_mailbox_management', function(){return view('teacher.teache
 
 #Student
 #ACCOUNT MANAGEMENT
-Route::get('/student_account_management', function(){return view('student.student_account_management');})->name('student.account_management');
+Route::get('/student_account_management', [StudentController::class, 'showAccountInf'])->name('student.account_management');
 #SCHEDULE MANAGEMENT
-Route::get('/student_schedule_management', function(){return view('student.student_schedule_management');})->name('student.schedule_management');
+Route::get('/student_schedule_management', [ScheduleController::class, 'showStudentSchedule'])->name('student.schedule_management');
 #ATTENDANCE RESULT
 Route::get('/student_attendance_result_management', function(){return view('student.student_attendance_results');})->name('student.attendance_results');
 #MAILBOX MANAGEMENT
