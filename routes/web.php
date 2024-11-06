@@ -34,6 +34,7 @@ Route::get('/admin_account_management', [UserController::class, 'showAccountDeta
 #ACCOUNT MANAGEMENT
 Route::get('/user/list', [UserController::class, 'list'])->name('user.list');
 Route::get('/user/search', [UserController::class, 'search'])->name('user.search');
+Route::post('/user/{id}/upload-image', [UserController::class, 'uploadImage'])->name('user.uploadImage');
 Route::get('/user/edit', function() {})->name('user.edit');
 Route::get('/user/delete', function() {})->name('user.delete');
 
@@ -68,6 +69,8 @@ Route::get('/teacher_mailbox_management', function(){return view('teacher.teache
 Route::get('/student_account_management', [StudentController::class, 'showAccountInf'])->name('student.account_management');
 #SCHEDULE MANAGEMENT
 Route::get('/student_schedule_management', [ScheduleController::class, 'showStudentSchedule'])->name('student.schedule_management');
+Route::get('/api/calendar/{month}/{year}', [ScheduleController::class, 'getCalendar']);
+Route::get('/student_search_schedule', [ScheduleController::class, 'searchCalendar']);
 #ATTENDANCE RESULT
 Route::get('/student_attendance_result_management', function(){return view('student.student_attendance_results');})->name('student.attendance_results');
 #MAILBOX MANAGEMENT

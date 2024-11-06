@@ -56,10 +56,11 @@
                     <h6 style="color: red;">*Vui lòng cập nhật ảnh</h6>
                     @endif
 
-                    <span id="uploadSpan" style="cursor: pointer;">
-                        <img src="{{asset('images/pencil.png')}}">
-                    </span>
-                    <input type="file" id="fileInput" style="display: none;" accept="image/*">
+                    <form id="imageUploadForm" method="POST" action="{{ route('user.uploadImage', $user->reference_id) }}" enctype="multipart/form-data">
+                        @csrf
+                        <span id="uploadSpan" style="cursor: pointer;"><img src="{{asset('images/pencil.png')}}"></span>
+                        <input type="file" id="fileInput" name="image" style="display: none;" accept="image/*">
+                    </form>
                 </div>
 
 

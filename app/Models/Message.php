@@ -15,4 +15,5 @@ class Message extends Model
         'content',
         'time',
     ];
+    public $timestamps = false;
 }

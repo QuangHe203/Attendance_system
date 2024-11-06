@@ -16,6 +16,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (file) {
             reader.readAsDataURL(file); // Đọc file dưới dạng Data URL
+            // Gửi form khi có file
+            document.getElementById('imageUploadForm').submit(); // Gửi form
         }
     });
 });

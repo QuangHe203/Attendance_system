@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{asset('css/student/student_schedule_management.css')}}">
-    <script src="{{asset('js/student/student_schedule_management.js')}}"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{asset('js/student/student_schedule_management.js')}}"></script>
     <title>Lịch học</title>
 </head>
 
@@ -136,9 +136,9 @@
 
             <div class="calendar-container">
                 <div class="display-month-year">
-                    <img id="prev" src="images/arrow-left.png">
+                    <img id="prev" src="{{asset('images/arrow-left.png')}}">
                     <span id="month-year"></span>
-                    <img id="next" src="images/right-arrow.png">
+                    <img id="next" src="{{asset('images/right-arrow.png')}}">
                 </div>
                 <table id="calendar-table">
                     <thead>
@@ -152,8 +152,8 @@
                             <td>CN</td>
                         </tr>
                     </thead>
-                    <tbody id="calendar-body">
-                        <!-- Các ngày sẽ được thêm tự động qua JavaScript -->
+                    <tbody>
+                        <!-- Dữ liệu sẽ được thêm vào đây bằng JavaScript -->
                     </tbody>
                 </table>
             </div>

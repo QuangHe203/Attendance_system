@@ -30,4 +30,41 @@ class ScheduleController extends Controller
 
         return view('student.student_schedule_management', compact('schedules'));
     }
+
+    public function getCalendar($month, $year)
+    {
+        $daysInMonth = cal_days_in_month(CAL_GREGORIAN, $month, $year);
+        $firstDayOfMonth = strtotime("$year-$month-01");
+        $firstDayOfWeek = date('N', $firstDayOfMonth); // 1 (Monday) - 7 (Sunday)
+
+        // Tạo mảng để chứa ngày
+        $calendar = [];
+        $week = [];
+
+        // Thêm các ngày trống trước khi bắt đầu tháng
+        for ($i = 1; $i < $firstDayOfWeek; $i++) {
+            $week[] = '';
+        }
+
+        // Thêm ngày của tháng
+        for ($day = 1; $day <= $daysInMonth; $day++) {
+            $week[] = $day;
+
+            // Nếu tuần đầy, thêm vào lịch
+            if (count($week) === 7) {
+                $calendar[] = $week;
+                $week = [];
+            }
+        }
+
+        // Thêm tuần còn lại nếu có
+        if (count($week) > 0) {
+            while (count($week) < 7) {
+                $week[] = ''; // Thêm các ngày trống vào cuối tuần
+            }
+            $calendar[] = $week;
+        }
+
+        return response()->json($calendar);
+    }
 }

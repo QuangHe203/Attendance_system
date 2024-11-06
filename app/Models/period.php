@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class period extends Model
 {
     use HasFactory;
+    public $timestamps = false;
 }
