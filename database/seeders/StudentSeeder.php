@@ -19,13 +19,12 @@ class StudentSeeder extends Seeder
         DB::table('students')->insert([
             [
                 'student_id'=>'SV01',
+                'student_id'=>'SV01',
                 'fullname'=>'Nguyễn Quang Hệ',
                 'phonenumber'=>'096171883',
                 'email'=>'quanghe2003@gmail.com',
                 'department'=>'Công nghệ thông tin',
                 'year'=>'K15',
-                
-                
             ],
             [
                 'fullname'=>'Ninh Duy Hiệp',
@@ -33,9 +32,8 @@ class StudentSeeder extends Seeder
                 'email'=>'duyhiep@gmail.com',
                 'department'=>'Công nghệ thông tin',
                 'student_id'=>'SV02',
+                'student_id'=>'SV02',
                 'year'=>'K15',
-                
-                
             ],
             [
                 'fullname'=>'Trần Minh Hiếu',
@@ -43,19 +41,16 @@ class StudentSeeder extends Seeder
                 'email'=>'minhhieu@gmail.com',
                 'department'=>'Công nghệ thông tin',
                 'student_id'=>'SV03',
+                'student_id'=>'SV03',
                 'year'=>'K15',
-                
-                
             ],
             [
                 'fullname'=>'Hồ Văn Long',
                 'phonenumber'=>'0254784126',
                 'email'=>'vanlong@gmail.com',
                 'department'=>'Công nghệ thông tin',
-                'student_id'=>'SV04',
+                'student_id'=>'Sv04',
                 'year'=>'K16',
-                
-                
             ],
             [
                 'fullname'=>'Trần Phương Thảo',
@@ -64,8 +59,6 @@ class StudentSeeder extends Seeder
                 'department'=>'Công nghệ thông tin',
                 'student_id'=>'SV05',
                 'year'=>'K16',
-                
-                
             ],
             [
                 'fullname'=>'Lý Khắc Cường',
@@ -74,8 +67,6 @@ class StudentSeeder extends Seeder
                 'department'=>'Ngôn ngữ Hàn',
                 'student_id'=>'SV06',
                 'year'=>'K15',
-                
-                
             ],
             [
                 'fullname'=>'Trần Thị Hiền',
@@ -84,8 +75,6 @@ class StudentSeeder extends Seeder
                 'department'=>'Ngôn ngữ Hàn',
                 'student_id'=>'SV07',
                 'year'=>'K15',
-                
-                
             ],
             [
                 'fullname'=>'Hồ Ngọc Anh',
@@ -94,8 +83,6 @@ class StudentSeeder extends Seeder
                 'department'=>'Ngôn ngữ Hàn',
                 'student_id'=>'SV08',
                 'year'=>'K15',
-                
-                
             ],
             [
                 'fullname'=>'Nguyễn Hồng Hoa',
@@ -104,8 +91,6 @@ class StudentSeeder extends Seeder
                 'department'=>'Ngôn ngữ Hàn',
                 'student_id'=>'SV09',
                 'year'=>'K16',
-                
-                
             ],
             [
                 'fullname'=>'Phạm Ngọc Thạch',
@@ -114,8 +99,6 @@ class StudentSeeder extends Seeder
                 'department'=>'Ngôn ngữ Hàn',
                 'student_id'=>'SV10',
                 'year'=>'K15',
-                
-                
             ],
         ]);
     }

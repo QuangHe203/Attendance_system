@@ -1,0 +1,168 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+main {
+    display: flex;
+    font-family: 'Roboto',sans-serif;
+}
+
+.sidebar {
+    text-align: center;
+    background-color: #a8daeb;   
+    height: 100vh; 
+}
+.sidebar img {
+    width: 150px;
+    margin: 30px 35px 20px 35px;
+}
+.sidebar ul li {
+    list-style: none;
+    color: black;
+    border: 1px ;
+    border-radius: 5px;
+    margin: 15px 20px;
+    padding: 10px ;
+    cursor: pointer;
+}
+.sidebar ul li img {
+    width: 20px;
+    padding: 0;
+    margin: 0;
+    margin-right: 10px;
+    display: block;
+}
+.sidebar ul li p {
+    font-size: 16px;
+}
+.sidebar ul li:hover {
+    background-color: #58a6b2;
+}
+.sidebar ul li a {
+    display: flex;
+    text-decoration: none;
+    color: black;
+}
+.content {
+    flex: 1;
+    display: flex;
+    overflow-y: auto;
+    height: 100vh;
+}
+#week-display {
+    width: 80%;
+    height: max-content;
+    border-radius: 10px;
+    margin: 15px 20px;
+    box-shadow: 0 0 12px rgba(130, 130, 130, 0.4);
+}
+#week-list {
+    list-style: none;
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    margin: 15px 0px;
+    padding: 0px 10px;
+}
+#week-list li{
+    /* margin: 0 20px; */
+    font-size: 15px;
+    font-family: 'Roboto',sans-serif;
+    width: 12.5%;
+    text-align: center;
+    border-left: 1px solid gray;
+    /* font-weight: 600; */
+}
+#week-list li p {
+    font-size: 15px;
+    border-left: none;
+}
+#day-list {
+    display: flex;
+    list-style: none;
+    width: 100%;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
+#day-list li {
+    width: 12.5%;
+    text-align: center;
+    font-size: 14px;
+    font-family: 'Roboto',sans-serif;
+    color: rgb(92, 92, 92);
+}
+
+.display-schedule {
+    /* border: 1px solid black; */
+    margin: 15px 10px;
+    display: flex;
+}
+.time-schedule , .day-schedule {
+    width: 12.5%;
+    text-align: center;
+}
+.time-schedule p {
+    margin: 40.8px 0px;
+}
+.day-schedule {
+    border: 1px solid rgb(192, 192, 192);
+    border-right: none;
+}
+.day-schedule hr:last-of-type {
+    margin: 10px !important;
+}
+.day-schedule hr {
+    margin: 28px 0px;
+}
+.day-schedule hr:nth-of-type(odd) {
+    margin-left:-25px; 
+}
+
+
+/*  */
+.calendar-container {
+    width: 20%;
+    height: 40%;
+    border-radius: 10px;
+    margin: 15px 20px;
+    box-shadow: 0 0 12px rgba(130, 130, 130, 0.4);
+}
+.display-month-year {
+    padding: 15px 0px;
+    text-align: center;
+    background-color: #58a6b2;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    font-weight: bold;
+}
+#prev,#next {
+    margin: 0px 10px;
+    width: 10px;
+    object-fit: contain;
+    cursor: pointer;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td {
+    /* border: 1px solid black; */
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    font-family: 'Roboto',sans-serif;
+    font-size: 13px;
+    border-radius: 50%;   
+    color: rgb(45, 45, 45);
+}
+
+
+.selected-day {
+    background-color: lightblue;
+}
+
+
+

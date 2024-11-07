@@ -18,63 +18,47 @@ class StudentListSeeder extends Seeder
         DB::table('student_lists')->insert([
             [
                 'course_name'=>'Phân tích và thiết kế phần mềm N02_2024',
-                'student_id'=>'SV01',
-                
-                
+                'student_id'=>'Sv01',
             ],
             [
                 'course_name'=>'Phân tích và thiết kế phần mềm N02_2024',
-                'student_id'=>'SV02',
-                
-                
+                'student_id'=>'Sv02',
             ],
             [
                 'course_name'=>'Phân tích và thiết kế phần mềm N02_2024',
-                'student_id'=>'SV03',
-                
-                
+                'student_id'=>'Sv03',
             ],
             [
                 'course_name'=>'Phân tích và thiết kế phần mềm N02_2024',
-                'student_id'=>'SV04',
-                
-                
+                'student_id'=>'Sv04',
             ],
             [
                 'course_name'=>'Phân tích và thiết kế phần mềm N02_2024',
-                'student_id'=>'SV05',
-                
-                
+                'student_id'=>'Sv05',
             ],
             [
                 'course_name'=>'Kỹ năng giao tiếp bằng tiếng Hàn N11_2024',
-                'student_id'=>'SV06',
-                
-                
+                'student_id'=>'Sv06',
             ],
             [
                 'course_name'=>'Kỹ năng giao tiếp bằng tiếng Hàn N11_2024',
-                'student_id'=>'SV07',
-                
-                
+                'student_id'=>'Sv07',
             ],
             [
                 'course_name'=>'Kỹ năng giao tiếp bằng tiếng Hàn N11_2024',
-                'student_id'=>'SV08',
-                
-                
+                'student_id'=>'Sv08',
             ],
             [
                 'course_name'=>'Kỹ năng giao tiếp bằng tiếng Hàn N11_2024',
-                'student_id'=>'SV09',
-                
-                
+                'student_id'=>'Sv09',
+                'created_at'=>now(),
+                'updated_at'=>now(),
             ],
             [
                 'course_name'=>'Kỹ năng giao tiếp bằng tiếng Hàn N11_2024',
-                'student_id'=>'SV10',
-                
-                
+                'student_id'=>'Sv10',
+                'created_at'=>now(),
+                'updated_at'=>now(),
             ],
         ]);
     }

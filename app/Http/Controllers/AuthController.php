@@ -36,7 +36,13 @@ class AuthController extends Controller
 
         session(['user' => $user]);
 
-        return redirect()->route('admin.account_management');
+        if ($user->role === 'teacher') {
+            return redirect()->route('teacher.account_management');
+        } elseif ($user->role === 'student') {
+            return redirect()->route('student.account_management');
+        } else {
+            return redirect()->route('admin.account_management');
+        }
     }
 
 

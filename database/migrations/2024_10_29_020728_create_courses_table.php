@@ -13,13 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-            Schema::create('courses', function (Blueprint $table) {
-                $table->string('course_name', 50)->primary();
-                $table->string('teacher_id', 50);
-                $table->string('subject_name', 50);
-                $table->string('department', 50);
-            });
-        
+        Schema::create('courses', function (Blueprint $table) {
+            $table->string('course_name', 50)->primary();
+            $table->string('teacher_id', 50);
+            $table->string('subject_name', 50);
+            $table->string('department', 50);
+        });
     }
 
     /**

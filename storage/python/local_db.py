@@ -26,19 +26,29 @@ def get_period_time_start(period_id):
         return result[0]
     return None
 
-# Kiểm tra xem sinh viên đã được điểm danh hay chưa (tránh điểm danh lại)
-def check_attendance_exists(student_id, period_id):
-    connection = connect_db()
+def check_attendance_exists(student_id, period_id, time_attend):
+    connection = connect_db()  # Kết nối cơ sở dữ liệu
     cursor = connection.cursor()
     
-    query = "SELECT * FROM student_attendance_results WHERE student_id = %s AND period_id = %s"
-    cursor.execute(query, (student_id, period_id))
+    # Chuyển time_attend thành chuỗi dạng 'YYYY-MM-DD' để so sánh chỉ phần ngày
+    time_attend_date = time_attend.strftime('%Y-%m-%d')
     
+    # Câu truy vấn để kiểm tra xem sinh viên đã điểm danh trong cùng ngày chưa
+    query = """
+    SELECT * FROM student_attendance_results 
+    WHERE student_id = %s AND period_id = %s 
+    AND DATE(time_attend) = %s
+    """
+    cursor.execute(query, (student_id, period_id, time_attend_date))
+    
+    # Lấy một kết quả duy nhất (vì chỉ cần biết có bản ghi tồn tại hay không)
     result = cursor.fetchone()
-    cursor.close()
-    connection.close()
+    
+    cursor.close()  # Đóng cursor
+    connection.close()  # Đóng kết nối
 
-    return result is not None
+    return result is not None 
+
 
 # Thêm bản ghi điểm danh vào bảng student_attendance_results
 def insert_attendance(student_id, period_id, time_attend, status):
@@ -51,3 +61,21 @@ def insert_attendance(student_id, period_id, time_attend, status):
     connection.commit()
     cursor.close()
     connection.close()
+
+def get_period_id(current_date, location):
+    connection = connect_db()
+    cursor = connection.cursor()
+
+    query = """
+    SELECT period_id from periods 
+    WHERE DATE(time_start) = %s AND location = %s
+    """
+
+    cursor.execute(query, (current_date, location))
+    result = cursor.fetchone()
+    cursor.close()
+    connection.close()
+
+    if result:
+        return result[0]
+    return None

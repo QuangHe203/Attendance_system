@@ -14,3 +14,10 @@ window.openTab = function(evt, tabName) {
     document.getElementById(tabName).style.display = "block";
     evt.currentTarget.className += " active";
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+    // Giả lập một sự kiện để truyền vào hàm openTab
+    const defaultEvent = new Event('click');
+    // Chọn tab 'TabClasses' làm mặc định
+    openTab(defaultEvent, 'TabClasses');
+});

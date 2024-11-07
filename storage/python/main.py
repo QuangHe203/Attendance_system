@@ -4,7 +4,7 @@ from facenet_embedding import get_embedding
 from sklearn.neighbors import NearestNeighbors
 from vectordb_pickle import load_embeddings
 from datetime import datetime
-from local_db import insert_attendance, check_attendance_exists, get_period_time_start
+from local_db import insert_attendance, check_attendance_exists, get_period_time_start, get_period_id
 from attendance_utils import is_on_time
 
 import numpy as np
@@ -13,8 +13,10 @@ def main():
     all_embeddings = load_embeddings()
     studentIDs = list(all_embeddings.keys())
     stored_embeddings = np.array([np.array(e) for e in all_embeddings.values()])
+    location = "A6-402"
+    current_date = datetime.now().date()
     threshold = 0.3
-    period_id = 1
+    period_id = get_period_id(current_date= current_date, location= location)
     
     if len(stored_embeddings) == 0:
         print("No embeddings found in the database.")
@@ -69,7 +71,7 @@ def main():
                         time_attend = datetime.now()
 
                         # Kiểm tra điểm danh hay chưa
-                        if not check_attendance_exists(student_id=studentID, period_id= period_id):
+                        if not check_attendance_exists(student_id=studentID, period_id= period_id, time_attend= time_attend):
                             status = is_on_time(time_start=time_start, time_attend= time_attend)
                             insert_attendance(studentID, period_id, time_attend, status)
                             print(f"Student with {studentID} has been marked")

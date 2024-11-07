@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\teacher;
+use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -85,8 +88,8 @@ class UserController extends Controller
 
     public function list(Request $request)
     {
-        
-        $users = User::where('role', '!=', 'admin')->paginate(10);
+
+        $users = User::all();
 
         if ($users->count() > 0) {
             $table = '';
@@ -111,8 +114,8 @@ class UserController extends Controller
                     <td style='text-align: start'>{$user->reference_id}</td>
                     <td style='text-align: start'>{$user->teacher->phonenumber}</td>
                     <td style='text-align: start'>Giáo viên</td>
-                    <td style='text-align: start'><a href='" . route('user.edit', $user->reference_id) . "'><img src='" . asset('images/editing.png') . "' width='20px' height='auto'></a></td>
-                    <td style='text-align: start'><a href='" . route('user.delete', $user->reference_id) . "' onclick='return confirm(\"Bạn có chắc chắn muốn xóa tài khoản này?\");'><img src='" . asset('images/delete.png') . "' width='20px' height='auto'></a></td>
+                    <td><a href='" . route('user.edit', $user->reference_id) . "'><img src='" . asset('images/editing.png') . "' width='20px' height='auto'></a></td>
+                    <td><a href='" . route('user.delete', $user->reference_id) . "' onclick='return confirm(\"Bạn có chắc chắn muốn xóa tài khoản này?\");'><img src='" . asset('images/delete.png') . "' width='20px' height='auto'></a></td>
                 </tr>
                 ";
                 }
@@ -121,6 +124,42 @@ class UserController extends Controller
             return response()->json([
                 'table' => $table,
             ]);
+        }
+    }
+
+    public function uploadImage(Request $request, $id)
+    {
+        $request->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        // Lấy user theo reference_id
+        $user = User::where('reference_id', '=', $id)->first();
+        if ($user && $request->hasFile('image')) {
+            $file = $request->file('image');
+            $imageContent = file_get_contents($file->getRealPath()); // Đọc nội dung tệp
+
+            if ($user->role == 'student') {
+                $student = Student::where('student_id', '=', $user->reference_id)->first();
+                if ($student) { // Kiểm tra xem student có tồn tại không
+                    $student->image = $imageContent;
+                    $student->save();
+                } else {
+                    return response()->json(['error' => 'Student not found.'], 404);
+                }
+            } elseif ($user->role == 'teacher') {
+                $teacher = Teacher::where('teacher_id', '=', $user->reference_id)->first();
+                if ($teacher) { // Kiểm tra xem teacher có tồn tại không
+                    $teacher->image = $imageContent; // Lưu vào trường BLOB
+                    $teacher->save();
+                } else {
+                    return response()->json(['error' => 'Teacher not found.'], 404);
+                }
+            }
+
+            return response()->json(['success' => 'Image uploaded successfully.']);
+        } else {
+            return response()->json(['error' => 'User not found or no image uploaded.'], 404);
         }
     }
 }

@@ -21,7 +21,6 @@ return new class extends Migration
             $table->string('email', 50);
             $table->string('department', 50);
         });
-        
     }
 
     /**

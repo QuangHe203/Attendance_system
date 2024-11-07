@@ -13,11 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-            Schema::create('student_lists', function (Blueprint $table) {
-                $table->string('course_name', 50);
-                $table->string('student_id', 50);
-            });
-            
+        Schema::create('student_lists', function (Blueprint $table) {
+            $table->string('course_name', 50);
+            $table->string('student_id', 50);
+        });
     }
 
     /**
