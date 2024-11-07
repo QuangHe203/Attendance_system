@@ -18,45 +18,45 @@ class StudentListSeeder extends Seeder
         DB::table('student_lists')->insert([
             [
                 'course_name'=>'Phân tích và thiết kế phần mềm N02_2024',
-                'student_id'=>'Sv01',
+                'student_id'=>'SV01',
             ],
             [
                 'course_name'=>'Phân tích và thiết kế phần mềm N02_2024',
-                'student_id'=>'Sv02',
+                'student_id'=>'SV02',
             ],
             [
                 'course_name'=>'Phân tích và thiết kế phần mềm N02_2024',
-                'student_id'=>'Sv03',
+                'student_id'=>'SV03',
             ],
             [
                 'course_name'=>'Phân tích và thiết kế phần mềm N02_2024',
-                'student_id'=>'Sv04',
+                'student_id'=>'SV04',
             ],
             [
                 'course_name'=>'Phân tích và thiết kế phần mềm N02_2024',
-                'student_id'=>'Sv05',
+                'student_id'=>'SV05',
             ],
             [
                 'course_name'=>'Kỹ năng giao tiếp bằng tiếng Hàn N11_2024',
-                'student_id'=>'Sv06',
+                'student_id'=>'SV06',
             ],
             [
                 'course_name'=>'Kỹ năng giao tiếp bằng tiếng Hàn N11_2024',
-                'student_id'=>'Sv07',
+                'student_id'=>'SV07',
             ],
             [
                 'course_name'=>'Kỹ năng giao tiếp bằng tiếng Hàn N11_2024',
-                'student_id'=>'Sv08',
+                'student_id'=>'SV08',
             ],
             [
                 'course_name'=>'Kỹ năng giao tiếp bằng tiếng Hàn N11_2024',
-                'student_id'=>'Sv09',
+                'student_id'=>'SV09',
                 'created_at'=>now(),
                 'updated_at'=>now(),
             ],
             [
                 'course_name'=>'Kỹ năng giao tiếp bằng tiếng Hàn N11_2024',
-                'student_id'=>'Sv10',
+                'student_id'=>'SV10',
                 'created_at'=>now(),
                 'updated_at'=>now(),
             ],

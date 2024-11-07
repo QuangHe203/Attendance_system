@@ -18,12 +18,11 @@ class StudentSeeder extends Seeder
         //
         DB::table('students')->insert([
             [
-                'student_id'=>'SV01',
-                'student_id'=>'SV01',
                 'fullname'=>'Nguyễn Quang Hệ',
                 'phonenumber'=>'096171883',
                 'email'=>'quanghe2003@gmail.com',
                 'department'=>'Công nghệ thông tin',
+                'student_id'=>'SV01',
                 'year'=>'K15',
             ],
             [
@@ -31,7 +30,6 @@ class StudentSeeder extends Seeder
                 'phonenumber'=>'0352412785',
                 'email'=>'duyhiep@gmail.com',
                 'department'=>'Công nghệ thông tin',
-                'student_id'=>'SV02',
                 'student_id'=>'SV02',
                 'year'=>'K15',
             ],
@@ -41,7 +39,6 @@ class StudentSeeder extends Seeder
                 'email'=>'minhhieu@gmail.com',
                 'department'=>'Công nghệ thông tin',
                 'student_id'=>'SV03',
-                'student_id'=>'SV03',
                 'year'=>'K15',
             ],
             [
@@ -49,7 +46,7 @@ class StudentSeeder extends Seeder
                 'phonenumber'=>'0254784126',
                 'email'=>'vanlong@gmail.com',
                 'department'=>'Công nghệ thông tin',
-                'student_id'=>'Sv04',
+                'student_id'=>'SV04',
                 'year'=>'K16',
             ],
             [
