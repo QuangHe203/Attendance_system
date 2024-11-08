@@ -70,7 +70,7 @@ Route::get('/student_account_management', [StudentController::class, 'showAccoun
 #SCHEDULE MANAGEMENT
 Route::get('/student_schedule_management', [ScheduleController::class, 'showStudentSchedule'])->name('student.schedule_management');
 Route::get('/api/calendar/{month}/{year}', [ScheduleController::class, 'getCalendar']);
-Route::get('/student_search_schedule', [ScheduleController::class, 'searchCalendar']);
+Route::get('/api/schedule/{day}/{month}/{year}', [ScheduleController::class, 'getSchedule']);
 #ATTENDANCE RESULT
 Route::get('/student_attendance_result_management', function(){return view('student.student_attendance_results');})->name('student.attendance_results');
 #MAILBOX MANAGEMENT

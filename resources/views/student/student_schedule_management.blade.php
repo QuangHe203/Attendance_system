@@ -12,8 +12,8 @@
 </head>
 
 <body>
-
     <main>
+        <div id="week-schedule-list"></div>
         <div class="sidebar">
             <img src="{{asset('images/logo-sidebar.png')}}" alt="Logo" class="logo">
             <h3>Hệ thống quản lý</h3>
