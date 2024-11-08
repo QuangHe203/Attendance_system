@@ -50,7 +50,7 @@
                 <h2>Thông Tin Tài Khoản</h2>
                 <div class="info-image">
                     @if ($user->image)
-                    <img src="data:image/jpeg;base64,{{ base64_encode($user->image) }}" class="image-user" id="profileImage">
+                    <img src="{{ asset($user->image) }}" class="image-user" id="profileImage">
                     @else
                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/2048px-Default_pfp.svg.png" class="image-user" id="profileImage">
                     <h6 style="color: red;">*Vui lòng cập nhật ảnh</h6>

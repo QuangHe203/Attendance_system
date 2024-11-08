@@ -6,7 +6,8 @@ use App\Models\User;
 use App\Models\teacher;
 use App\Models\Student;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
+use Intervention\Image\Facades\Image;
 
 class UserController extends Controller
 {
@@ -127,39 +128,47 @@ class UserController extends Controller
         }
     }
 
-    public function uploadImage(Request $request, $id)
+    public function uploadImage(Request $request, $reference_id)
     {
-        $request->validate([
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
-
-        // Lấy user theo reference_id
-        $user = User::where('reference_id', '=', $id)->first();
-        if ($user && $request->hasFile('image')) {
+        if ($request->hasFile('image') && $request->file('image')->isValid()) {
             $file = $request->file('image');
-            $imageContent = file_get_contents($file->getRealPath()); // Đọc nội dung tệp
+            $fileName = $reference_id . '.png';
 
-            if ($user->role == 'student') {
-                $student = Student::where('student_id', '=', $user->reference_id)->first();
-                if ($student) { // Kiểm tra xem student có tồn tại không
-                    $student->image = $imageContent;
-                    $student->save();
-                } else {
-                    return response()->json(['error' => 'Student not found.'], 404);
-                }
-            } elseif ($user->role == 'teacher') {
-                $teacher = Teacher::where('teacher_id', '=', $user->reference_id)->first();
-                if ($teacher) { // Kiểm tra xem teacher có tồn tại không
-                    $teacher->image = $imageContent; // Lưu vào trường BLOB
-                    $teacher->save();
-                } else {
-                    return response()->json(['error' => 'Teacher not found.'], 404);
-                }
+            // Tìm người dùng dựa trên reference_id
+            $user = User::where('reference_id', '=', $reference_id)->first();
+            if (!$user) {
+                return redirect()->back()->with('error', 'User not found.');
             }
 
-            return response()->json(['success' => 'Image uploaded successfully.']);
-        } else {
-            return response()->json(['error' => 'User not found or no image uploaded.'], 404);
+            // Chọn thư mục lưu ảnh tùy theo vai trò
+            $rolePath = ($user->role == 'student') ? 'StudentImage' : 'TeacherImage';
+            $model = ($user->role == 'student') ? Student::class : Teacher::class;
+            $userModel = $model::where($user->role . '_id', '=', $user->reference_id)->first();
+
+            // Kiểm tra người dùng tương ứng
+            if (!$userModel) {
+                return redirect()->back()->with('error', ucfirst($user->role) . ' not found.');
+            }
+
+            // Tạo thư mục nếu chưa có
+            $destinationPath = public_path($rolePath);
+            if (!File::exists($destinationPath)) {
+                File::makeDirectory($destinationPath, 0777, true);
+            }
+
+            // Xử lý và lưu ảnh
+            $image = Image::make($file);
+            $image->encode('png');
+            $image->save($destinationPath . '/' . $fileName);
+
+            // Lưu đường dẫn ảnh vào cơ sở dữ liệu
+            $userModel->image = $rolePath . '/' . $fileName;
+            $userModel->save();
+
+            // Tải lại trang và truyền thông báo thành công
+            return redirect()->back()->with('success', 'Image uploaded and saved successfully!');
         }
+
+        return redirect()->back()->with('error', 'No image file or invalid file!');
     }
 }

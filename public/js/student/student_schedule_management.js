@@ -98,45 +98,23 @@ window.showWeek = function (day, month, year) {
 window.showSchedule = function (day, month, year) {
     // Gửi yêu cầu GET đến Controller của Laravel thông qua Ajax
     $.get(`/api/schedule/${day}/${month}/${year}`, function (data) {
+        $(".day-schedule").find(".createdSchedule").remove();
         if (data.schedule.length > 0) {
             data.schedule.forEach(function (schedule) {
                 const date = new Date(schedule.day);
 
-                const dayOfWeek = date.toLocaleString("en-US", {
-                    weekday: "long",
-                });
-
-                console.log("Day:", dayOfWeek);
-                console.log("Time Start:", schedule.time_start);
-                console.log("Time End: ", schedule.time_end);
-                console.log("Subject: ", schedule.subject_name);
-                console.log("Location: ", schedule.location);
-                switch (dayOfWeek) {
-                    case "Monday":
-                        $(".monday").append(`
-            <div class="class-schedule" style="position: absolute; top: calc(6.75 * 3.8em); left: 10px; width: 100%; height: calc(2.5 * 3.8em); background-color: #f0f8ff; border: 1px solid #ccc; padding: 5px; box-sizing: border-box;">
-                <p style="font-weight: bold;">Môn: English</p>
-                <p>Phòng: A6 304</p>
-            </div>
-                        `);
-                        break;
-                    case "Tuesday":
-                            $(".tuesday").append(`
-                <div class="class-schedule" style="position: absolute; top: calc(6.75 * 3.8em); left: 10px; width: 100%; height: calc(2.5 * 3.8em); background-color: #f0f8ff; border: 1px solid #ccc; padding: 5px; box-sizing: border-box;">
-                    <p style="font-weight: bold;">Môn: English</p>
-                    <p>Phòng: A6 304</p>
-                </div>
-                            `);
-                            break;
-                            case "wednesday":
-                                $(".wednesday").append(`
-                    <div class="class-schedule" style="position: absolute; top: calc(6.75 * 3.8em); left: 10px; width: 116px; height: calc(2.5 * 3.8em); background-color: #f0f8ff; border: 1px solid #ccc; padding: 5px; box-sizing: border-box;">
-                        <p style="font-weight: bold;">Môn: English</p>
-                        <p>Phòng: A6 304</p>
-                    </div>
-                                `);
-                                break;
-                }
+                const dayOfWeek = date
+                    .toLocaleString("en-US", {
+                        weekday: "long",
+                    })
+                    .toLowerCase();
+                createSchedule(
+                    schedule.subject_name,
+                    dayOfWeek,
+                    schedule.time_start,
+                    schedule.time_end,
+                    schedule.location
+                );
             });
         }
     });
@@ -166,3 +144,33 @@ $(document).ready(function () {
         loadCalendar(currentMonth, currentYear);
     });
 });
+
+function convertTimeToNumber(time) {
+    // Loại bỏ dấu hai chấm và chuyển thành số
+    return parseInt(time.replace(/:/g, ""), 10);
+}
+
+function createSchedule(Subject, dayClass, time_start, time_end, location) {
+    let num_start = convertTimeToNumber(time_start);
+    let num_end = convertTimeToNumber(time_end);
+    let topPosition = ((num_start - 53000) * 3) / 500 - 805;
+    let height = ((num_end - num_start) * 3) / 500;
+
+    $(`.${dayClass}`).append(`
+    <div class="createdSchedule" style="position: relative;
+        top: ${topPosition}px;
+        left: 0px;
+        width: 118px;
+        height: ${height}px;
+        background-color: #A8DAEB;
+        border: 1px solid #ccc;
+        padding: 5px;
+        box-sizing: border-box;
+        z-index: 10;">
+        <p style="background-color: #58A6B2;">${Subject}</p>
+        <p>${time_start} - ${time_end}</p>
+        <p>${location}</p>
+</div>
+
+`);
+}
