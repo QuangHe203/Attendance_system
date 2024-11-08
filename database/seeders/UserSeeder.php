@@ -23,8 +23,8 @@ class UserSeeder extends Seeder
                 'password'=>'1234abcd',
                 'role'=>'student',
                 'id_reference'=>'SV01',
-                'created_at'=>now(),
-                'updated_at'=> now(),
+                
+                
             ],
             [
                 'user_id'=>'user02',
@@ -32,8 +32,8 @@ class UserSeeder extends Seeder
                 'password'=>'1234abcd',
                 'role'=>'student',
                 'id_reference'=>'SV02',
-                'created_at'=>now(),
-                'updated_at'=> now(),
+                
+                
             ],
             [
                 'user_id'=>'user03',
@@ -41,8 +41,8 @@ class UserSeeder extends Seeder
                 'password'=>'1234abcd',
                 'role'=>'student',
                 'id_reference'=>'SV03',
-                'created_at'=>now(),
-                'updated_at'=> now(),
+                
+                
             ],
             [
                 'user_id'=>'user04',
@@ -50,8 +50,8 @@ class UserSeeder extends Seeder
                 'password'=>'1234abcd',
                 'role'=>'teacher',
                 'id_reference'=>'GV01',
-                'created_at'=>now(),
-                'updated_at'=> now(),
+                
+                
             ],
             [
                 'user_id'=>'user05',
@@ -59,8 +59,8 @@ class UserSeeder extends Seeder
                 'password'=>'1234abcd',
                 'role'=>'teacher',
                 'id_reference'=>'GV02',
-                'created_at'=>now(),
-                'updated_at'=> now(),
+                
+                
             ],
             [
                 'user_id'=>'user06',
@@ -68,8 +68,8 @@ class UserSeeder extends Seeder
                 'password'=>'1234abcd',
                 'role'=>'Admin',
                 'id_reference'=>'admin01',
-                'created_at'=>now(),
-                'updated_at'=> now(),
+                
+                
             ],
             
         ]);

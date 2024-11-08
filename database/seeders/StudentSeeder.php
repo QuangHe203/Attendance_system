@@ -23,6 +23,7 @@ class StudentSeeder extends Seeder
                 'phonenumber'=>'096171883',
                 'email'=>'quanghe2003@gmail.com',
                 'department'=>'Công nghệ thông tin',
+                'student_id'=>'SV01',
                 'year'=>'K15',
             ],
             [
@@ -46,7 +47,7 @@ class StudentSeeder extends Seeder
                 'phonenumber'=>'0254784126',
                 'email'=>'vanlong@gmail.com',
                 'department'=>'Công nghệ thông tin',
-                'student_id'=>'Sv04',
+                'student_id'=>'SV04',
                 'year'=>'K16',
             ],
             [
