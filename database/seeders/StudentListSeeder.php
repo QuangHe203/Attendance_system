@@ -37,6 +37,26 @@ class StudentListSeeder extends Seeder
                 'student_id'=>'SV05',
             ],
             [
+                'course_name'=>'Khai phá dữ liệu N23_2024',
+                'student_id'=>'SV01',
+            ],
+            [
+                'course_name'=>'Khai phá dữ liệu N23_2024',
+                'student_id'=>'SV02',
+            ],
+            [
+                'course_name'=>'Khai phá dữ liệu N23_2024',
+                'student_id'=>'SV03',
+            ],
+            [
+                'course_name'=>'Khai phá dữ liệu N23_2024',
+                'student_id'=>'SV04',
+            ],
+            [
+                'course_name'=>'Khai phá dữ liệu N23_2024',
+                'student_id'=>'SV05',
+            ],
+            [
                 'course_name'=>'Kỹ năng giao tiếp bằng tiếng Hàn N11_2024',
                 'student_id'=>'SV06',
             ],

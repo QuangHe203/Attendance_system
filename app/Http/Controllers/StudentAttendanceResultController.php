@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\StudentAttendanceResult;
+use App\Models\Semester;
 use Illuminate\Support\Facades\DB;
 
 class StudentAttendanceResultController extends Controller
@@ -106,7 +107,31 @@ class StudentAttendanceResultController extends Controller
         return response()->json(['message' => 'Không tìm thấy kết quả nào']);
     }
 
+    public function StudentAttendanceResultIndex()
+    {
+        $loggedInUser = session('user');
 
+        $semesters = DB::table('students')
+            ->join('student_lists', 'students.student_id', '=', 'student_lists.student_id')
+            ->join('courses', 'student_lists.course_name', '=', 'courses.course_name')
+            ->join('semesters', 'courses.semester_name', '=', 'semesters.semester_name')
+            ->select(
+                'semesters.semester_name'
+            )
+            ->where('students.student_id', '=', $loggedInUser->reference_id)
+            ->get();
+        $courses = DB::table('students')
+            ->join('student_lists', 'students.student_id', '=', 'student_lists.student_id')
+            ->join('courses', 'student_lists.course_name', '=', 'courses.course_name')
+            ->join('semesters', 'courses.semester_name', '=', 'semesters.semester_name')
+            ->select(
+                'courses.course_name'
+            )
+            ->where('students.student_id', '=', $loggedInUser->reference_id)
+            ->get();
+
+        return view('Student.Student_attendance_results', compact('semesters', 'courses'));
+    }
     /*
     public function list(Request $request) {
         $student_attendance_results = StudentAttendanceResult::join('students', 'student_attendance_results.student_id', '=', 'students.student_id')

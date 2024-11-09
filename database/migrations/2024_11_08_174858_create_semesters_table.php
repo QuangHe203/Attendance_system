@@ -13,12 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('student_attendance_results', function (Blueprint $table) {
-            $table->id('attendance_result_id');
-            $table->string('student_id');
-            $table->integer('period_id');
-            $table->dateTime('time_attend');
-            $table->boolean('status');
+        Schema::create('semesters', function (Blueprint $table) {
+            $table->string('semester_name')->unique()->nullable(false);
+            $table->dateTime('time_start');
+            $table->dateTime('time_end');
         });
     }
 
@@ -29,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('student_attendance_results');
+        Schema::dropIfExists('semesters');
     }
 };

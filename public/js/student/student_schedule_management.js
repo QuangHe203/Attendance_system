@@ -153,8 +153,8 @@ function convertTimeToNumber(time) {
 function createSchedule(Subject, dayClass, time_start, time_end, location) {
     let num_start = convertTimeToNumber(time_start);
     let num_end = convertTimeToNumber(time_end);
-    let topPosition = ((num_start - 53000) * 3) / 500 - 805;
-    let height = ((num_end - num_start) * 3) / 500;
+    let topPosition = ((num_start - 53000) * 7) / 1250 - 800;
+    let height = ((num_end - num_start) * 7) / 1250;
 
     $(`.${dayClass}`).append(`
     <div class="createdSchedule" style="position: relative;

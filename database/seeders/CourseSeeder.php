@@ -22,12 +22,21 @@ class CourseSeeder extends Seeder
                 'teacher_id'=>'GV01',
                 'subject_name'=>'Phân tích và thiết kế phần mềm',
                 'department'=>'Công nghệ thông tin',
+                'semester_name'=>'Kì I 2024-2025 CNTT'
+            ],
+            [
+                'course_name'=>'Khai phá dữ liệu N23_2024',
+                'teacher_id'=>'GV01',
+                'subject_name'=>'Khai phá dữ liệu',
+                'department'=>'Công nghệ thông tin',
+                'semester_name'=>'Kì I 2024-2025 CNTT'
             ],
             [
                 'course_name'=>'Kỹ năng giao tiếp bằng tiếng Hàn N11_2024',
                 'teacher_id'=>'GV02',
                 'subject_name'=>'Kỹ năng giao tiếp bằng tiếng Hàn',
                 'department'=>'Ngôn ngữ Hàn Quốc',
+                'semester_name'=>'Kì I 2024-2025 NNHQ'
             ],
         ]);
     }

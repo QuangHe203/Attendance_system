@@ -47,6 +47,36 @@ class PeriodSeeder extends Seeder
                 'location'=>'A6-402',
             ],
             [
+                'course_name'=>'Khai phá dữ liệu N23_2024',
+                'time_start'=>'2024-10-03 06:45:00',
+                'time_end'=>'2024-10-03 09:30:00',
+                'location'=>'A6-402',
+            ],
+            [
+                'course_name'=>'Khai phá dữ liệu N23_2024',
+                'time_start'=>'2024-10-11 06:45:00',
+                'time_end'=>'2024-10-11 09:30:00',
+                'location'=>'A6-402',
+            ],
+            [
+                'course_name'=>'Khai phá dữ liệu N23_2024',
+                'time_start'=>'2024-10-18 06:45:00',
+                'time_end'=>'2024-10-18 09:30:00',
+                'location'=>'A6-402',
+            ],
+            [
+                'course_name'=>'Khai phá dữ liệu N23_2024',
+                'time_start'=>'2024-10-25 06:45:00',
+                'time_end'=>'2024-10-25 09:30:00',
+                'location'=>'A6-402',
+            ],
+            [
+                'course_name'=>'Khai phá dữ liệu N23_2024',
+                'time_start'=>'2024-11-02 06:45:00',
+                'time_end'=>'2024-11-02 09:30:00',
+                'location'=>'A6-402',
+            ],
+            [
                 'course_name'=>'Kỹ năng giao tiếp bằng tiếng Hàn N11_2024',
                 'time_start'=>'2024-10-02 09:30:00',
                 'time_end'=>'2024-10-02 12:10:00',

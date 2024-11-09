@@ -72,6 +72,6 @@ Route::get('/student_schedule_management', [ScheduleController::class, 'showStud
 Route::get('/api/calendar/{month}/{year}', [ScheduleController::class, 'getCalendar']);
 Route::get('/api/schedule/{day}/{month}/{year}', [ScheduleController::class, 'getSchedule']);
 #ATTENDANCE RESULT
-Route::get('/student_attendance_result_management', function(){return view('student.student_attendance_results');})->name('student.attendance_results');
+Route::get('/student_attendance_result_management', [StudentAttendanceResultController::class,'StudentAttendanceResultIndex'])->name('student.attendance_results');
 #MAILBOX MANAGEMENT
 Route::get('/student_mailbox_management', function(){return view('student.student_mailbox_management');})->name('student.mailbox_management');
