@@ -50,21 +50,6 @@ def detect_and_save(image_path, studentID, image_name, save_dir= 'faces/'):
             face_pil_img = Image.fromarray(face_crop)
 
         face_pil_img.save(f"{student_dir}/{image_name}.jpg")
-
-        # transform = transforms.Compose([
-        #     transforms.RandomHorizontalFlip(p=0.5),
-        #     transforms.RandomRotation(degrees=10),
-        #     transforms.ColorJitter(brightness=0.2, contrast=0.2, hue=0.1),
-        #     transforms.ToTensor(),
-        #     transforms.Normalize(mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5])
-        # ])
-
-        # augmented_image = transform(face_pil_img)
-
-        # face_pil_img_aug = augmented_image.permute(1, 2, 0).mul(255).byte().numpy()
-        # face_pil_img_aug = Image.fromarray(face_pil_img_aug)
-
-        # face_pil_img_aug.save(f"{student_dir}/augmented_{image_name}.jpg")
     else:
         print(f"No faces detected in the image for {image_path}")
 
