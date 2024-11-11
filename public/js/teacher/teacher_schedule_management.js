@@ -97,7 +97,7 @@ window.showWeek = function (day, month, year) {
 
 window.showSchedule = function (day, month, year) {
     // Gửi yêu cầu GET đến Controller của Laravel thông qua Ajax
-    $.get(`/api/studentschedule/${day}/${month}/${year}`, function (data) {
+    $.get(`/api/teacherschedule/${day}/${month}/${year}`, function (data) {
         $(".day-schedule").find(".createdSchedule").remove();
         if (data.schedule.length > 0) {
             data.schedule.forEach(function (schedule) {

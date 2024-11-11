@@ -32,6 +32,13 @@ class CourseSeeder extends Seeder
                 'semester_name'=>'Kì I 2024-2025 CNTT'
             ],
             [
+                'course_name'=>'Xử lý ngôn ngữ tự nhiên N03_2024',
+                'teacher_id'=>'GV01',
+                'subject_name'=>'Xử lý ngôn ngữ tự nhiên',
+                'department'=>'Công nghệ thông tin',
+                'semester_name'=>'Kì II 2024-2025 CNTT'
+            ],
+            [
                 'course_name'=>'Kỹ năng giao tiếp bằng tiếng Hàn N11_2024',
                 'teacher_id'=>'GV02',
                 'subject_name'=>'Kỹ năng giao tiếp bằng tiếng Hàn',

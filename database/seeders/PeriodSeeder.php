@@ -106,6 +106,36 @@ class PeriodSeeder extends Seeder
                 'time_end'=>'2024-10-30 12:10:00',
                 'location'=>'A7-406',
             ],
+            [
+                'course_name'=>'Xử lý ngôn ngữ tự nhiên N03_2024',
+                'time_start'=>'2024-12-01 09:30:00',
+                'time_end'=>'2024-12-01 12:10:00',
+                'location'=>'A6-203',
+            ],
+            [
+                'course_name'=>'Xử lý ngôn ngữ tự nhiên N03_2024',
+                'time_start'=>'2024-12-08 09:30:00',
+                'time_end'=>'2024-12-08 12:10:00',
+                'location'=>'A6-203',
+            ],
+            [
+                'course_name'=>'Xử lý ngôn ngữ tự nhiên N03_2024',
+                'time_start'=>'2024-12-15 09:30:00',
+                'time_end'=>'2024-12-15 12:10:00',
+                'location'=>'A6-203',
+            ],
+            [
+                'course_name'=>'Xử lý ngôn ngữ tự nhiên N03_2024',
+                'time_start'=>'2024-12-23 09:30:00',
+                'time_end'=>'2024-12-23 12:10:00',
+                'location'=>'A6-203',
+            ],
+            [
+                'course_name'=>'Xử lý ngôn ngữ tự nhiên N03_2024',
+                'time_start'=>'2024-12-30 09:30:00',
+                'time_end'=>'2024-12-30 12:10:00',
+                'location'=>'A6-203',
+            ],
             
         ]);
     }

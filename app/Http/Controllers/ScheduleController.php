@@ -8,42 +8,6 @@ use Carbon\Carbon;
 
 class ScheduleController extends Controller
 {
-    public function showStudentSchedule(Request $request)
-    {
-        $year = 2024;
-        $month = 10;
-        $day = 8;
-        $date = Carbon::createFromDate($year, $month, $day);
-
-        // Tính toán bắt đầu và kết thúc của tuần
-        $startOfWeek = $date->startOfWeek()->format('Y-m-d'); // Chủ Nhật đầu tuần
-        $endOfWeek = $date->endOfWeek()->format('Y-m-d'); // Thứ Bảy cuối tuần
-
-        $loggedInUser = session('user');
-        $user_id = $loggedInUser->user_id;
-
-        // Truy vấn lịch học của người dùng trong tuần
-        $schedules = DB::table('Users')
-            ->join('Students', 'users.reference_id', '=', 'students.student_id')
-            ->join('student_lists', 'students.student_id', '=', 'student_lists.student_id')
-            ->join('courses', 'student_lists.course_name', '=', 'courses.course_name')
-            ->join('periods', 'courses.course_name', '=', 'periods.course_name')
-            ->select(
-                'courses.subject_name',
-                'periods.location',
-                DB::raw('DATE(periods.time_start) as day'), // Chuyển đổi thời gian start thành ngày
-                DB::raw('TIME(periods.time_start) as time_start'),
-                DB::raw('TIME(periods.time_end) as time_end')
-            )
-            ->where('users.user_id', $user_id)
-            // Sử dụng whereBetween để lọc các bản ghi trong khoảng thời gian từ $startOfWeek đến $endOfWeek
-            ->whereBetween(DB::raw('DATE(periods.time_start)'), [$startOfWeek, $endOfWeek])
-            ->orderBy('periods.time_start')
-            ->get();
-
-        return view('student.student_schedule_management', compact('schedules'));
-    }
-
     public function getCalendar($month, $year)
     {
         $daysInMonth = cal_days_in_month(CAL_GREGORIAN, $month, $year);
@@ -76,7 +40,7 @@ class ScheduleController extends Controller
         return response()->json($calendar);
     }
 
-    public function getSchedule($day, $month, $year)
+    public function getStudentSchedule($day, $month, $year)
     {
         // Sử dụng Carbon để tạo đối tượng ngày tháng
         $date = Carbon::createFromDate($year, $month, $day);
@@ -93,6 +57,40 @@ class ScheduleController extends Controller
             ->join('Students', 'users.reference_id', '=', 'students.student_id')
             ->join('student_lists', 'students.student_id', '=', 'student_lists.student_id')
             ->join('courses', 'student_lists.course_name', '=', 'courses.course_name')
+            ->join('periods', 'courses.course_name', '=', 'periods.course_name')
+            ->select(
+                'courses.subject_name',
+                'periods.location',
+                DB::raw('DATE(periods.time_start) as day'), // Chuyển đổi thời gian start thành ngày
+                DB::raw('TIME(periods.time_start) as time_start'),
+                DB::raw('TIME(periods.time_end) as time_end')
+            )
+            ->where('users.user_id', $user_id)
+            // Sử dụng whereBetween để lọc các bản ghi trong khoảng thời gian từ $startOfWeek đến $endOfWeek
+            ->whereBetween(DB::raw('DATE(periods.time_start)'), [$startOfWeek, $endOfWeek])
+            ->orderBy('periods.time_start')
+            ->get();
+
+        // Trả về kết quả dưới dạng JSON
+        return response()->json(['schedule' => $schedules]);
+    }
+
+    public function getTeacherSchedule($day, $month, $year)
+    {
+        // Sử dụng Carbon để tạo đối tượng ngày tháng
+        $date = Carbon::createFromDate($year, $month, $day);
+
+        // Tính toán bắt đầu và kết thúc của tuần
+        $startOfWeek = $date->startOfWeek()->format('Y-m-d'); // Chủ Nhật đầu tuần
+        $endOfWeek = $date->endOfWeek()->format('Y-m-d'); // Thứ Bảy cuối tuần
+
+        $loggedInUser = session('user');
+        $user_id = $loggedInUser->user_id;
+
+        // Truy vấn lịch học của người dùng trong tuần
+        $schedules = DB::table('Users')
+            ->join('Teachers', 'users.reference_id', '=', 'teachers.teacher_id')
+            ->join('courses', 'teachers.teacher_id', '=', 'courses.teacher_id')
             ->join('periods', 'courses.course_name', '=', 'periods.course_name')
             ->select(
                 'courses.subject_name',

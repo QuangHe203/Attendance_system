@@ -47,37 +47,44 @@
             <div class="info-container">
                 <h2>Thông Tin Tài Khoản</h2>
                 <div class="info-image">
-                    <img src="https://lh4.googleusercontent.com/proxy/QEaRteD63NfUL5Wxb1p7e1ANAZFcUCktVv6rG4uErupF7jb3UFsSX1JgFKvLJuQQJixASNXMAzdHP8hSiNA90cv49M227_vuLLrEG_pgrkWbzDDPAM_0BfQR51j_mV2iaR53iOf6W5Y48E7O43NwlH7HffoK" class="image-user" id="profileImage">
-                    <span id="uploadSpan" style="cursor: pointer;">
-                        <img src="{{asset('images/pencil.png')}}">
-                    </span>
-                    <input type="file" id="fileInput" style="display: none;" accept="image/*">
+                    @if ($user->image)
+                    <img src="{{ asset($user->image) }}" class="image-user" id="profileImage">
+                    @else
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/2048px-Default_pfp.svg.png" class="image-user" id="profileImage">
+                    <h6 style="color: red;">*Vui lòng cập nhật ảnh</h6>
+                    @endif
+
+                    <form id="imageUploadForm" method="POST" action="{{ route('user.uploadImage', $user->reference_id) }}" enctype="multipart/form-data">
+                        @csrf
+                        <span id="uploadSpan" style="cursor: pointer;"><img src="{{asset('images/pencil.png')}}"></span>
+                        <input type="file" id="fileInput" name="image" style="display: none;" accept="image/*">
+                    </form>
                 </div>
                 
                 
                 <div class="info-user">
                     <label for="id-user">ID Giảng viên: </label>
-                    <span>SV123</span>
+                    <span>{{$user->reference_id}}</span>
                 </div>
                 <div class="info-user">
                     <label for="name">Họ và Tên: </label>
-                    <span>Nguyễn Quang Hệ</span>
+                    <span>{{$user->fullname}}</span>
                 </div>
                 <div class="info-user">
                     <label for="khoa">Khoa: </label>
-                    <span>Công nghệ thông tin</span>
+                    <span>{{$user->department}}</span>
                 </div>
                 <div class="info-user">
                     <label for="phone">Số điện thoại: </label>
-                    <span>0123456789</span>
+                    <span>{{$user->phonenumber}}</span>
                 </div>
                 <div class="info-user">
                     <label for="email">Email: </label>
-                    <span>Hesi@gmail.com</span>
+                    <span>{{$user->email}}</span>
                 </div>
                 <div class="info-user">
                     <label for="username">Tên đăng nhập: </label>
-                    <span>Hesii</span>
+                    <span>{{$user->usename}}</span>
                 </div>
 
                 <form action="{{ route('logout') }}" method="POST">

@@ -70,15 +70,15 @@
                         <p>Soạn tin nhắn</p>
                         <hr>
                         {{-- Dữ liệu giả --}}
-                        <form>
+                        <form action="{{ route('send.message') }}" method="POST">
                             @csrf
 
                             <label for="classes">Lớp học: </label>
                             <select id="classes">
-                                <option value="class1">Chọn lớp học</option>
-                                <option value="class2">Trực quan hóa dữ liệu</option>
-                                <option value="class3">Hệ nhúng</option>
-                                <option value="class4">Quản trị dự án</option>
+                                <option value="">Chọn lớp học</option>
+                                @foreach ($courses as $course)
+                                <option value="{{$course->course_name}}">{{$course->course_name}}</option>
+                                @endforeach
                             </select>
 
                             <label for="student-teacher" style="margin-left: 50px">Đến: </label>
@@ -88,34 +88,12 @@
                                 <option value="teacher">Giảng viên</option>
                             </select>
                             {{-- Hiển thị tên đối tượng sau khi chọn --}}
-                            <span>Tên đối tượng sau khi chọn</span>
-                            <!-- Dữ liệu học sinh giả -->
+                            <!-- <span id="selected-name">Tên đối tượng sau khi chọn</span> -->
+                            <!-- Dữ liệu học sinh  -->
                             <ul id="student-options" style="display: none;">
-                                <li>Trần Minh Hiếu</li>
-                                <li>Trần Minh Hiếu</li>
-                                <li>Trần Minh Hiếu</li>
-                                <li>Trần Minh Hiếu</li>
-                                <li>Trần Minh Hiếu</li>
-                                <li>Trần Minh Hiếu</li>
-                                <li>Trần Minh Hiếu</li>
-                                <li>Trần Minh Hiếu</li>
-                                <li>Trần Minh Hiếu</li>
-                                <li>Trần Minh Hiếu</li>
-                                <li>Trần Minh Hiếu</li>
-                                <li>Trần Minh Hiếu</li>
                             </ul>
-                            <!-- dữ liệu giảng viên giả -->
+                            <!-- dữ liệu giảng viên -->
                             <ul id="teacher-options" style="display: none;">
-                                <li>Nguyễn Quang Hệ</li>
-                                <li>Nguyễn Quang Hệ</li>
-                                <li>Nguyễn Quang Hệ</li>
-                                <li>Nguyễn Quang Hệ</li>
-                                <li>Nguyễn Quang Hệ</li>
-                                <li>Nguyễn Quang Hệ</li>
-                                <li>Nguyễn Quang Hệ</li>
-                                <li>Nguyễn Quang Hệ</li>
-                                <li>Nguyễn Quang Hệ</li>
-                                <li>Nguyễn Quang Hệ</li>
                             </ul>
                             <br>
                             <label for="title">Tiêu đề: </label>

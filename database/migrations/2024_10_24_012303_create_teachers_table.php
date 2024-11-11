@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('fullname', 50);
             $table->string('phonenumber', 15);
             $table->string('email', 50);
+            $table->string('image')->nullable(true);
             $table->string('department', 50);
         });
     }

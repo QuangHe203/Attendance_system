@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ asset('css/student/student_schedule_management.css')}}">
-    <script src="{{ asset('js/student/student_schedule_management.js')}}"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ asset('js/teacher/teacher_schedule_management.js')}}"></script>
     <title>Lịch giảng dạy</title>
 </head>
 <body>

@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('phonenumber', 15);
             $table->string('email', 50);
             $table->string('department', 50);
-            $table->binary('image')->nullable(true);
+            $table->string('image')->nullable(true);
             $table->string('year', 10);
         });
     }

@@ -13,7 +13,7 @@ class Message extends Model
         'id_receiver',
         'title',
         'content',
-        'time',
+        'course_name',
     ];
     public $timestamps = false;
 }

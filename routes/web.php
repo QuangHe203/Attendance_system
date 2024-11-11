@@ -6,6 +6,7 @@ use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\StudentAttendanceResultController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\TeacherAttendanceResultController;
 use App\Http\Controllers\UserController;
 
@@ -46,19 +47,12 @@ Route::get('/admin_attendance_management', [StudentAttendanceResultController::c
 Route::get('/student_attendance_result/search', [StudentAttendanceResultController::class, 'search'])->name('admin.student_attendance_results.search');
 Route::get('/teacher_attendance_result/search', [TeacherAttendanceResultController::class, 'search'])->name('admin.teacher_attendance_results.search');
 
-#MAILBOX MANAGEMENT
-Route::get('/admin_mailbox_management', function() {return view('admin.admin_mailbox_management'); })->name('admin.mailbox_management');
-
-Route::get('/send-message', [MessageController::class, 'showForm'])->name('send.message.form');
-Route::post('/send-message', [MessageController::class, 'sendMessage'])->name('send.message');
-
-Route::get('/sent-messages', [MessageController::class, 'viewSentMessages'])->name('sent.messages');
-
 #TEACHER
 #ACCOUNT MANAGEMENT
-Route::get('/teacher_account_management', function(){return view('teacher.teacher_account_management');})->name('teacher.account_management');
+Route::get('/teacher_account_management', [TeacherController::class, 'showAccountInf'])->name('teacher.account_management');
 #SCHEDULE MANAGEMENT
 Route::get('/teacher_schedule_management', function(){return view('teacher.teacher_schedule_management');})->name('teacher.schedule_management');
+Route::get('/api/teacherschedule/{day}/{month}/{year}', [ScheduleController::class, 'getTeacherSchedule']);
 #ATTENDANCE RESULT
 Route::get('/teacher_attendance_result_management', function(){return view('teacher.teacher_attendance_results');})->name('teacher.attendance_results');
 #MAILBOX MANAGEMENT
@@ -68,10 +62,13 @@ Route::get('/teacher_mailbox_management', function(){return view('teacher.teache
 #ACCOUNT MANAGEMENT
 Route::get('/student_account_management', [StudentController::class, 'showAccountInf'])->name('student.account_management');
 #SCHEDULE MANAGEMENT
-Route::get('/student_schedule_management', [ScheduleController::class, 'showStudentSchedule'])->name('student.schedule_management');
+Route::get('/student_schedule_management', function(){return view('student.student_schedule_management');})->name('student.schedule_management');
 Route::get('/api/calendar/{month}/{year}', [ScheduleController::class, 'getCalendar']);
-Route::get('/api/schedule/{day}/{month}/{year}', [ScheduleController::class, 'getSchedule']);
+Route::get('/api/studentschedule/{day}/{month}/{year}', [ScheduleController::class, 'getStudentSchedule']);
 #ATTENDANCE RESULT
 Route::get('/student_attendance_result_management', [StudentAttendanceResultController::class,'StudentAttendanceResultIndex'])->name('student.attendance_results');
 #MAILBOX MANAGEMENT
-Route::get('/student_mailbox_management', function(){return view('student.student_mailbox_management');})->name('student.mailbox_management');
+Route::get('/student_mailbox_management', [MessageController::class, 'getInfo'])->name('student.mailbox_management');
+Route::get('/mail_box/getStudent', [MessageController::class, 'getStudent']);
+Route::get('/mail_box/getTeacher', [MessageController::class, 'getTeacher']);
+Route::post('/send-message', [MessageController::class, 'sendMessage'])->name('send.message');

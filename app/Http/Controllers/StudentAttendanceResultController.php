@@ -119,18 +119,35 @@ class StudentAttendanceResultController extends Controller
                 'semesters.semester_name'
             )
             ->where('students.student_id', '=', $loggedInUser->reference_id)
+            ->distinct()
             ->get();
+
         $courses = DB::table('students')
             ->join('student_lists', 'students.student_id', '=', 'student_lists.student_id')
             ->join('courses', 'student_lists.course_name', '=', 'courses.course_name')
             ->join('semesters', 'courses.semester_name', '=', 'semesters.semester_name')
             ->select(
-                'courses.course_name'
+                'courses.course_name as course_name',
+                'semesters.semester_name as semester_name'
+
+            )
+            ->where('students.student_id', '=', $loggedInUser->reference_id)
+            ->get();
+        $student_attendance_results = DB::table('students')
+            ->join('student_attendance_results', 'students.student_id', '=', 'student_attendance_results.student_id')
+            ->join('periods', 'student_attendance_results.period_id', '=', 'periods.period_id')
+            ->select(
+                'periods.course_name as course_name',
+                DB::raw('DATE(periods.time_start) as day'),
+                DB::raw('TIME(periods.time_start) as time_start'),
+                DB::raw('TIME(periods.time_end) as time_end'),
+                'student_attendance_results.status as status',
+
             )
             ->where('students.student_id', '=', $loggedInUser->reference_id)
             ->get();
 
-        return view('Student.Student_attendance_results', compact('semesters', 'courses'));
+        return view('Student.Student_attendance_results', compact('semesters', 'courses', 'student_attendance_results'));
     }
     /*
     public function list(Request $request) {
